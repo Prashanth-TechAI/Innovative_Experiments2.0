@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wedding Decor Builder</title>
+</head>
+<body>
+    <h1>Select Decoration Items</h1>
+    <form method="POST" action="/generate" enctype="multipart/form-data">
+        {% for item in items %}
+            <div>
+                <img src="/static/items/{{ item.id }}.png" width="100"/>
+                <label>{{ item.name }}</label>
+                <input type="checkbox" name="selected_ids" value="{{ item.id }}"/>
+                <input type="number" name="counts" min="1" placeholder="Count"/>
+            </div>
+        {% endfor %}
+
+        <div>
+            <h3>Upload Custom Decoration Images</h3>
+            <input type="file" name="custom_images" multiple accept="image/*">
+        </div>
+
+        <div>
+            <label>Describe your design requirements:</label>
+            <textarea name="user_prompt" rows="3" cols="50" placeholder="e.g., I want a royal theme with lots of red and floral arches."></textarea>
+        </div>
+
+        <button type="submit">Generate Design</button>
+
+        {% if final_prompt %}
+            <h2>Final Prompt:</h2>
+            <p>{{ final_prompt }}</p>
+            <h2>Generated Images:</h2>
+            {% for img in images %}
+                <img src="data:image/png;base64,{{ img }}" width="256"/>
+            {% endfor %}
+        {% endif %}
+    </form>
+</body>
+</html>
