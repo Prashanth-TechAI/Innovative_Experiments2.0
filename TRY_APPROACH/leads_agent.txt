@@ -1,0 +1,97 @@
+lead-assignments :
+
+{
+  "_id": ObjectId("678638d25f7911e26f14fae8"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "lead": ObjectId("67862c405f7911e26f14f7bd"),
+  "team": ObjectId("67861cb2f36e66f1317e806e"),
+  "defaultPrimary": ObjectId("67861b46f36e66f1317e7f41"),
+  "defaultSecondary": ObjectId("67861a69f36e66f1317e7ec0"),
+  "assignee": ObjectId("67861bbcf36e66f1317e7fd0"),
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-14T10:13:38.674Z"),
+  "updatedAt": ISODate("2025-01-14T10:13:38.674Z")
+}
+...............................................................
+
+lead-rotations:
+
+{
+  "_id": ObjectId("67ab252fd148e5b444e6e959"),
+  "company": ObjectId("6786104742a84c578c7490f0"),
+  "lead": ObjectId("679ca0d912bfcfa1d18112cc"),
+  "team": ObjectId("679c6ffd81f0fa8cd98937dc"),
+  "assignee": ObjectId("679c6d2f81f0fa8cd989362c"),
+  "date": ISODate("2025-02-11T00:00:00.000Z"),
+  "createdAt": ISODate("2025-02-11T10:23:43.928Z"),
+  "updatedAt": ISODate("2025-02-11T10:23:43.928Z"),
+  "__v": 0
+}
+
+................................................................
+
+leads :
+
+{
+  "_id": ObjectId("678633df5f7911e26f14fa71"),
+  "company": ObjectId("678611fa42a84c578c749155"),
+  "leadNo": "#36",
+  "name": "Sonu Sharma",
+  "countryCode": "+91",
+  "phone": "9436457464",
+  "sourceType": "Broker",
+  "broker": ObjectId("67861b976769548b89be2353"),
+  "commissionPercent": 3,
+  "minBudget": 10000000,
+  "maxBudget": 30000000,
+  "buyingTimeline": "0 TO 6 months",
+  "leadStatus": "Temporary Converted",
+  "rotationCount": 0,
+  "lastActivity": ISODate("2025-01-14T09:52:31.019Z"),
+  "status": "Active",
+  "createdAt": ISODate("2025-01-14T09:52:31.021Z"),
+  "updatedAt": ISODate("2025-01-14T09:54:03.130Z"),
+  "__v": 0,
+  "embedded": true
+}
+.......................................................
+
+brokers:
+
+{
+  "_id": { "$oid": "67860c026769548b89bdd00b" },
+  "company": { "$oid": "67187f12c0a663e1608011df" },
+  "name": "Courtney Rhodes",
+  "countryCode": "+91",
+  "phone": "1122334451",
+  "country": { "$oid": "671a0a3c2ad9f571b6da4390" },
+  "city": { "$oid": "671a0a3c2ad9f571b6da4551" },
+  "state": { "$oid": "671a0a3c2ad9f571b6da4538" },
+  "address": "0985 Deborah Roads, Blankenshipport, MT 15793",
+  "zipCode": "18821",
+  "aadharNo": "203577948775",
+  "panNo": "HGVHY8876Y",
+  "commissionPercent": 42,
+  "bankDetails": {
+    "bankNameId": { "$oid": "6785f1996769548b89bdbcf4" },
+    "bankName": "Hdfc",
+    "icon": "masters/f6d8f497851809d2e211ab69feb7bf.svg",
+    "bankAccountType": "Saving",
+    "ifscCode": "rcSx61796",
+    "swiftCode": "nCCpxgRR",
+    "accountNo": "8064477344"
+  },
+  "realEstateLicenseDetails": {
+    "licenseNo": "REAL1760793",
+    "licenseIssueDate": { "$date": "2025-01-01T00:00:00.000Z" },
+    "licenseExpirationDate": { "$date": "2025-04-29T00:00:00.000Z" },
+    "yearStartedInRealEstate": 2003,
+    "status": "Active",
+    "createdAt": { "$date": "2025-01-14T07:02:26.472Z" },
+    "updatedAt": { "$date": "2025-01-24T08:56:07.535Z" },
+    "__v": 0
+  },
+  "createdAt": { "$date": "2025-01-14T07:02:26.472Z" },
+  "updatedAt": { "$date": "2025-01-24T08:56:07.535Z" }
+}

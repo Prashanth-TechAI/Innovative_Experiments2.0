@@ -1,0 +1,2220 @@
+This the strctures fo all the collection swhich are in the mongo db ( all ids are OnjectId's only).
+###################################################################################################
+
+agenda-jobs:
+
+{
+  "_id": "67b0c25a122e7c4e5908145e",
+  "type": "single",
+  "name": "ip-172-31-44-20-lead-rotation",
+  "data": {
+    "endDate": null,
+    "lastModifiedBy": null,
+    "nextRunAt": "2025-02-18T05:41:36.439Z",
+    "priority": 0,
+    "repeatInterval": "30 minutes",
+    "repeatTimezone": null,
+    "shouldSaveResult": false,
+    "skipDays": null,
+    "startDate": null,
+    "lockedAt": null,
+    "lastRunAt": "2025-02-18T05:11:36.439Z",
+    "lastFinishedAt": "2025-02-18T05:11:36.453Z"
+  }
+}
+.............................................................
+
+amenities:
+
+{
+  "_id": "6785e62e6769548b89bdabd3",
+  "name": "Garden",
+  "amenityType": "Land",
+  "icon": "masters/3a9efa38b248ad5fdcbde3e42bb0cf.svg",
+  "status": "Active",
+  "createdAt": "2025-01-14T04:21:02.080Z",
+  "updatedAt": "2025-01-24T07:00:03.391Z",
+  "__v": 0
+}
+.................................................
+
+attendenc:
+
+{
+  "_id": {
+    "$oid": "67ea1a84e59ae42948755254"
+  },
+  "company": {
+    "$oid": "67e7ac6eda12739f19f72611"
+  },
+  "user": {
+    "$oid": "67ea177fe59ae42948754c03"
+  },
+  "date": {
+    "$date": "2025-03-30T18:30:00.000Z"
+  },
+  "checkInTime": "10:00",
+  "lastAction": "Check out",
+  "minutesWorked": 7,
+  "logs": [
+    {
+      "checkInTime": "10:00",
+      "minutesWorked": 1,
+      "_id": {
+        "$oid": "67ea1a84e59ae42948755255"
+      },
+      "checkOutTime": "10:01"
+    },
+    {
+      "checkInTime": "10:05",
+      "checkInSelfie": "user/attendance/67ea177fe59ae42948754c03/a6437594619df77c906ffac46a622…",
+      "minutesWorked": 4,
+      "_id": {
+        "$oid": "67ea1ba2e59ae429487552d9"
+      },
+      "checkOutTime": "10:09"
+    },
+    {
+      "checkInTime": "10:39",
+      "checkInSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…",
+      "minutesWorked": 1,
+      "_id": {
+        "$oid": "67ea2396e59ae42948755a9f"
+      },
+      "checkOutSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…",
+      "checkOutTime": "10:40"
+    },
+    {
+      "checkInTime": "10:41",
+      "checkInSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…",
+      "minutesWorked": 0,
+      "_id": {
+        "$oid": "67ea23ece59ae42948755b47"
+      },
+      "checkOutSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…",
+      "checkOutTime": "10:41"
+    },
+    {
+      "checkInTime": "10:45",
+      "checkInSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…",
+      "minutesWorked": 1,
+      "_id": {
+        "$oid": "67ea2502e59ae42948755e7f"
+      },
+      "checkOutSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…",
+      "checkOutTime": "10:46"
+    }
+  ],
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-03-31T04:31:00.085Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T05:16:02.842Z"
+  },
+  "__v": 0,
+  "checkOutTime": "10:46",
+  "checkOutSelfie": "https://telepathys3.s3.us-east-1.amazonaws.com/user/attendance/67ea177…"
+}
+.........................................................
+
+bank-names:
+
+{
+  "_id": "6785f1996769548b89bdbcf4",
+  "name": "Hdfc",
+  "icon": "masters/f6d8f497851809d2e211ab69feb7bf.svg",
+  "status": "Active",
+  "createdAt": "2025-01-14T05:09:45.074Z",
+  "updatedAt": "2025-01-14T05:09:45.074Z",
+  "__v": 0
+}
+....................................................
+
+banks:
+
+{
+  "_id": "6785fafe6769548b89bdcf57",
+  "company": "67187f12c0a663e1608011df",
+  "bankNameId": {
+    "_id": "6785f2486769548b89bdbcff",
+    "name": "Sbi",
+    "icon": "masters/de634a8d6f834956960d9381328b28.svg",
+    "branchName": "Sbi mansarovar",
+    "branchAddress": "Sector C, Civil line",
+    "ifscCode": "SBIN012122",
+    "swiftCode": "AWD45657"
+  },
+  "contactPersonDetails": {
+    "fullName": "Deepanshu Parashar",
+    "countryCode": "+91",
+    "phone": "8878452116",
+    "designation": "Operations Manager",
+    "status": "Active",
+    "createdAt": "2025-01-14T05:49:50.044Z",
+    "updatedAt": "2025-01-14T05:49:50.044Z",
+    "__v": 0
+  }
+}
+.................................
+
+bhk:
+
+{
+  "_id": "6785f3e46769548b89bdbd1a",
+  "name": "2BHK",
+  "status": "Active",
+  "createdAt": "2025-01-14T05:19:32.952Z",
+  "updatedAt": "2025-01-14T05:19:32.952Z",
+  "__v": 0
+}
+............................................
+
+bhk-types:
+
+{
+  "_id": "6785f42e6769548b89bdbd66",
+  "name": "Triplex",
+  "status": "Active",
+  "createdAt": "2025-01-14T05:20:46.764Z",
+  "updatedAt": "2025-01-14T05:20:46.764Z",
+  "__v": 0
+}
+...............................................
+
+broker-payments:
+
+{
+  "_id": "6788cf6224ecd4f1d0990c7c",
+  "company": "6786134d42a84c578c749310",
+  "project": "6787addead2676b575a93e40",
+  "property": "6787ae7c765f684e5b3c673a",
+  "booking": "67888ded24ecd4f1d098e6aa",
+  "lead": "6787fca05f7911e26f150aa0",
+  "broker": "6787f13e6769548b89bf0ec1",
+  "amount": 144900,
+  "paymentStatus": "Due",
+  "paymentMode": "Cash",
+  "createdAt": "2025-01-16T09:20:34.855Z",
+  "updatedAt": "2025-01-16T09:20:34.855Z",
+  "__v": 0
+}
+....................................................
+
+brokers:
+
+{
+  "_id": { "$oid": "67860c026769548b89bdd00b" },
+  "company": { "$oid": "67187f12c0a663e1608011df" },
+  "name": "Courtney Rhodes",
+  "countryCode": "+91",
+  "phone": "1122334451",
+  "country": { "$oid": "671a0a3c2ad9f571b6da4390" },
+  "city": { "$oid": "671a0a3c2ad9f571b6da4551" },
+  "state": { "$oid": "671a0a3c2ad9f571b6da4538" },
+  "address": "0985 Deborah Roads, Blankenshipport, MT 15793",
+  "zipCode": "18821",
+  "aadharNo": "203577948775",
+  "panNo": "HGVHY8876Y",
+  "commissionPercent": 42,
+  "bankDetails": {
+    "bankNameId": { "$oid": "6785f1996769548b89bdbcf4" },
+    "bankName": "Hdfc",
+    "icon": "masters/f6d8f497851809d2e211ab69feb7bf.svg",
+    "bankAccountType": "Saving",
+    "ifscCode": "rcSx61796",
+    "swiftCode": "nCCpxgRR",
+    "accountNo": "8064477344"
+  },
+  "realEstateLicenseDetails": {
+    "licenseNo": "REAL1760793",
+    "licenseIssueDate": { "$date": "2025-01-01T00:00:00.000Z" },
+    "licenseExpirationDate": { "$date": "2025-04-29T00:00:00.000Z" },
+    "yearStartedInRealEstate": 2003,
+    "status": "Active",
+    "createdAt": { "$date": "2025-01-14T07:02:26.472Z" },
+    "updatedAt": { "$date": "2025-01-24T08:56:07.535Z" },
+    "__v": 0
+  },
+  "createdAt": { "$date": "2025-01-14T07:02:26.472Z" },
+  "updatedAt": { "$date": "2025-01-24T08:56:07.535Z" }
+}
+.............................................................
+
+compaign-payments:
+
+{
+  "_id": {
+    "$oid": "6810bc3b3fca9bfc33e1b856"
+  },
+  "company": {
+    "$oid": "67e7edcada12739f19f72672"
+  },
+  "campaignType": "sms",
+  "txnId": "b1eac6af-9474-448b-b44f-6a996240594f",
+  "amount": 100,
+  "paymentStatus": "Due",
+  "generatedReferenceNo": "#SMSPAY/2025/1",
+  "dueDate": {
+    "$date": "2025-04-29T11:47:07.360Z"
+  },
+  "paymentInfo": [],
+  "createdAt": {
+    "$date": "2025-04-29T11:47:07.363Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-29T11:47:07.363Z"
+  },
+  "__v": 0
+}
+
+..............................................................
+
+campaign-templates :
+
+{
+  "_id": { "$oid": "67ac7300715fb01e818125be" },
+  "company": { "$oid": "6786129d42a84c578c74918c" },
+  "name": "Shivratri",
+  "slug": "shivratri_6786129d42a84c578c74918c",
+  "templateType": "WhatsApp",
+  "content": "Hiii\nI wish you happy mahashivratri {{name}}\n\n*Sent by HomeLead*",
+  "variables": [
+    {
+      "variableType": "Name",
+      "variableName": "name",
+      "example": "Divya",
+      "_id": { "$oid": "67ac7300715fb01e818125bf" }
+    }
+  ],
+  "whatsAppTemplateId": "942282858045260",
+  "whatsAppTemplateStatus": "APPROVED",
+  "whatsAppTemplateCategory": "MARKETING",
+  "status": "Active",
+  "createdAt": { "$date": "2025-02-12T10:08:00.577Z" },
+  "updatedAt": { "$date": "2025-02-12T10:08:18.199Z" },
+  "__v": 0
+}
+...................................................................
+
+campaigns:
+
+{
+  "_id": { "$oid": "67ac77ed715fb01e8181265e" },
+  "company": { "$oid": "6786129d42a84c578c74918c" },
+  "campaignType": "email",
+  "service": "ses",
+  "name": "Divya",
+  "targetType": "Filters",
+  "countries": [
+    { "$oid": "671a0a3c2ad9f571b6da4390" }
+  ],
+  "states": [
+    { "$oid": "671a0a3c2ad9f571b6da4de3" }
+  ],
+  "cities": [
+    { "$oid": "671a0a3c2ad9f571b6da4e27" }
+  ],
+  "tags": [],
+  "targets": [
+    { "$oid": "6788a146ab94fc34722a838c" },
+    { "$oid": "6788a1efab94fc34722a83a4" },
+    { "$oid": "6788a5f3865bf0ed8061d355" },
+    { "$oid": "679798059e90d110e95740ee" },
+    { "$oid": "67ab06afb24bb3c2324e81d9" }
+  ],
+  "template": { "$oid": "67889d80ab94fc34722a835a" },
+  "subject": "Hiiiii",
+  "message": "<p>Welcome to our Project 🌟</p><p><br></p><p>Hi Telepathy,</p><p>Welc…",
+  "attachments": [],
+  "campaignStatus": "Delivered",
+  "status": "Active",
+  "createdAt": { "$date": "2025-02-12T10:29:01.539Z" },
+  "updatedAt": { "$date": "2025-02-12T10:29:01.571Z" },
+  "__v": 0
+}
+
+.......................................................
+
+chat-cache:
+
+{
+  "_id": {
+    "$oid": "681a0b648db65671231334d5"
+  },
+  "company": {
+    "$oid": "67e7ac6eda12739f19f72611"
+  },
+  "__v": 0,
+  "actions": [],
+  "createdAt": {
+    "$date": "2025-05-06T13:15:16.320Z"
+  },
+  "message": "fdd",
+  "messageStatus": "Seen",
+  "messageType": "Text",
+  "receiver": {
+    "$oid": "680f6060499787e3f9381262"
+  },
+  "sender": {
+    "$oid": "67ea4225e59ae429487589a9"
+  },
+  "status": "Active",
+  "updatedAt": {
+    "$date": "2025-05-06T13:18:20.795Z"
+  }
+}
+....................................................
+
+chat-groups:
+
+{
+  "_id": {
+    "$oid": "6805df5af06918c6fcd7d8e0"
+  },
+  "company": {
+    "$oid": "67e6c50ef7d96ed19222db0d"
+  },
+  "name": "1212",
+  "members": [
+    {
+      "user": {
+        "$oid": "67e6c50ef7d96ed19222db0f"
+      },
+      "isAdmin": true,
+      "_id": {
+        "$oid": "6805df5af06918c6fcd7d8e1"
+      }
+    },
+    {
+      "user": {
+        "$oid": "67ea61ece59ae4294875998c"
+      },
+      "isAdmin": false,
+      "_id": {
+        "$oid": "6805df5af06918c6fcd7d8e2"
+      }
+    },
+    {
+      "user": {
+        "$oid": "67ea62bfe59ae42948759e48"
+      },
+      "isAdmin": false,
+      "_id": {
+        "$oid": "6805df5af06918c6fcd7d8e3"
+      }
+    }
+  ],
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-04-21T06:02:02.330Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-21T06:02:02.330Z"
+  },
+  "__v": 0
+}
+..........................................................
+
+chats:
+
+{
+  "_id": {
+    "$oid": "681a0b6417b7f6e01ae7bd6a"
+  },
+  "company": {
+    "$oid": "67e7ac6eda12739f19f72611"
+  },
+  "sender": {
+    "$oid": "67ea4225e59ae429487589a9"
+  },
+  "receiver": {
+    "$oid": "680f6060499787e3f9381262"
+  },
+  "message": "hi",
+  "messageType": "Text",
+  "messageStatus": "Seen",
+  "actions": [],
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-05-06T13:15:16.320Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-06T13:18:37.627Z"
+  },
+  "__v": 0
+}
+...................................................
+
+cold-leads:
+
+{
+  "_id": {
+    "$oid": "67ee4f3735bf06de14f2c4fb"
+  },
+  "countryCode": "+91",
+  "phone": "8987876765",
+  "coldLeadStatus": "Pending",
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-04-03T09:04:56.004Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T09:04:56.004Z"
+  },
+  "__v": 0
+}
+...............................................................
+
+companies :
+
+{
+  "_id": { "$oid": "678611fa42a84c578c749155" },
+  "clientName": "Akash Purohit",
+  "name": "TaskGrid Solutions",
+  "address": "Vaishali Nagar Business Complexes",
+  "country": { "$oid": "671a0a3c2ad9f571b6da4390" },
+  "state": { "$oid": "671a0a3c2ad9f571b6da4de3" },
+  "city": { "$oid": "671a0a3c2ad9f571b6da4e27" },
+  "primaryCountryCode": "+91",
+  "primaryPhone": "8819564825",
+  "secondaryCountryCode": "+91",
+  "secondaryPhone": "9752368423",
+  "primaryEmail": "akash@yopmail.com",
+  "contactPersonName": "Gouri Gautam",
+  "contactPersonCountryCode": "+91",
+  "contactPersonPhone": "3443534543",
+  "contactPersonEmail": "gouri@yopmail.com",
+  "plan": { "$oid": "67a32abbb2287ab1b5a1d9e5" },
+  "addOnServices": ["IVR", "Email"],
+  "planStartDate": { "$date": "2025-02-14T05:28:26.602Z" },
+  "planEndDate": { "$date": "2026-02-14T05:28:26.000Z" },
+  "maxNoOfUsers": 20,
+  "amountPaid": 100000000,
+  "subDomain": "https://akash.homelead.in",
+  "totalGeneralExpenses": 0,
+  "isSuperAdmin": false,
+  "status": "Active",
+  "createdAt": { "$date": "2025-01-14T07:27:54.018Z" },
+  "updatedAt": { "$date": "2025-02-14T05:28:26.610Z" },
+  "__v": 0,
+  "superAdmin": { "$oid": "678611fa42a84c578c749157" }
+}
+............................................................
+
+contact-tags :
+
+{
+  "_id": { "$oid": "67ac5f2ed895bddab15ec92e" },
+  "company": { "$oid": "67860e8042a84c578c7490bf" },
+  "name": "suditi",
+  "description": "hi suditi we have a sale for 20 make up and dress 20%",
+  "status": "Active",
+  "createdAt": { "$date": "2025-02-12T08:43:26.683Z" },
+  "updatedAt": { "$date": "2025-02-12T08:43:42.677Z" },
+  "__v": 0
+}
+............................................................
+
+
+contacts :
+
+{
+  "_id": { "$oid": "679386939dbd57ee3fd601c6" },
+  "company": { "$oid": "6786134d42a84c578c749310" },
+  "name": "Tony singh",
+  "countryCode": "+91",
+  "phone": "9834727454",
+  "campaignUserType": "User",
+  "email": "tony@yopmail.com",
+  "tags": [],
+  "status": "Active",
+  "createdAt": { "$date": "2025-01-24T12:24:51.487Z" },
+  "updatedAt": { "$date": "2025-01-24T12:24:51.487Z" },
+  "formattedPhone": "+91-9834727454",
+  "__v": 0
+}
+............................................................
+
+contract-payments:
+
+{
+  "_id": {
+    "$oid": "6808c53e3706b7387f01a767"
+  },
+  "company": {
+    "$oid": "67e6c3fdf7d96ed19222dace"
+  },
+  "contractor": {
+    "$oid": "6808bcfc568f17ab6e47d4a9"
+  },
+  "project": {
+    "$oid": "6807389d1c85cc1a90b40a0c"
+  },
+  "contract": {
+    "$oid": "6808c5123706b7387f01a4a1"
+  },
+  "ordinal": 0,
+  "amount": 12,
+  "paymentStatus": "Paid",
+  "paymentMode": "Cash",
+  "generatedReferenceNo": "#CONPAY/CLP-PHASE/2025/28",
+  "remarks": "sxa",
+  "dueDate": {
+    "$date": "2025-04-23T10:47:26.710Z"
+  },
+  "receivedOn": {
+    "$date": "2025-04-23T10:47:26.710Z"
+  },
+  "status": "Active",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-04-23T10:47:26.713Z"
+  },
+  "updatedAt": null
+}
+.....................................................
+
+contractor-job-types:
+
+{
+  "_id": {
+    "$oid": "6800d8767c414f69f15912c6"
+  },
+  "name": "new contw",
+  "status": "Archived",
+  "createdAt": {
+    "$date": "2025-04-17T10:31:18.821Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-24T09:16:45.209Z"
+  },
+  "__v": 0
+}
+.....................................................
+
+contractor-services:
+
+{
+  "_id": {
+    "$oid": "67ff37997205f9f2c7ab2950"
+  },
+  "name": "service newwebudwer",
+  "status": "Archived",
+  "createdAt": {
+    "$date": "2025-04-16T04:52:41.155Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-16T04:54:03.181Z"
+  },
+  "__v": 0
+}
+...............................................................
+
+contractor-sub-services:
+
+{
+  "_id": {
+    "$oid": "67ff3870629a615758e3c79a"
+  },
+  "contractorService": {
+    "$oid": "67ff37b57205f9f2c7ab2958"
+  },
+  "name": "service sub new",
+  "status": "Archived",
+  "createdAt": {
+    "$date": "2025-04-16T04:56:16.335Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-16T14:00:09.438Z"
+  },
+  "__v": 0
+}
+..................................................................
+
+contractors:
+
+{
+  "_id": {
+    "$oid": "6808bcfc568f17ab6e47d4a9"
+  },
+  "company": {
+    "$oid": "67e6c3fdf7d96ed19222dace"
+  },
+  "name": "chat specialist",
+  "countryCode": "+91",
+  "phone": "1212121212",
+  "email": "abhi@yopmail.com",
+  "address": "121",
+  "country": {
+    "$oid": "671a0a3c2ad9f571b6da4390"
+  },
+  "state": {
+    "$oid": "671a0a3c2ad9f571b6da4391"
+  },
+  "city": {
+    "$oid": "671a0a3c2ad9f571b6da4392"
+  },
+  "zipCode": "111111",
+  "contractorType": "Individual",
+  "suitableFor": [
+    "Residential"
+  ],
+  "serviceTypes": [
+    {
+      "contractorService": {
+        "$oid": "6808a054aa0eafdf26438310"
+      }
+    }
+  ],
+  "contractorSubServices": [
+    {
+      "$oid": "6808a0faaa0eafdf26438398"
+    }
+  ],
+  "contractorRateType": "Weekly",
+  "jobTypes": [
+    {
+      "$oid": "6800da797c414f69f1591360"
+    }
+  ],
+  "isGoodsSupplier": false,
+  "yearsOfExperience": 11,
+  "avatar": "profile/images/b98127188cb2be078593fd80ce9ba2.png",
+  "documents": [
+    {
+      "title": "License No",
+      "documentRefNo": "1212121212121212",
+      "document": "projects/promoter-documents/2f6a5aa956be9b8af2f1feb6ea831b.png",
+      "_id": {
+        "$oid": "6808bcfc568f17ab6e47d4ab"
+      }
+    }
+  ],
+  "contactPersons": [
+    {
+      "name": "nane",
+      "countryCode": "+91",
+      "phone": "1212121212",
+      "email": "name@yopmail.com",
+      "_id": {
+        "$oid": "6808bcfc568f17ab6e47d4ac"
+      }
+    }
+  ],
+  "bankDetails": {
+    "bankName": {
+      "$oid": "67e7a91593611ad0882bf448"
+    },
+    "bankAccountType": "Current",
+    "accountNo": "1111111111",
+    "ifscCode": "11111111"
+  },
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-04-23T10:12:12.225Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-23T10:12:12.225Z"
+  },
+  "__v": 0
+}
+
+...........................................................
+
+contracts:
+
+{
+  "_id": {
+    "$oid": "6808c1973706b7387f0190c3"
+  },
+  "company": {
+    "$oid": "67e6c3fdf7d96ed19222dace"
+  },
+  "contractor": {
+    "$oid": "6808bcfc568f17ab6e47d4a9"
+  },
+  "project": {
+    "$oid": "6807389d1c85cc1a90b40a0c"
+  },
+  "serviceTypes": [
+    {
+      "contractService": {
+        "$oid": "6808a054aa0eafdf26438310"
+      }
+    }
+  ],
+  "contractSubServices": [
+    {
+      "$oid": "6808a0faaa0eafdf26438398"
+    }
+  ],
+  "startDate": {
+    "$date": "2025-04-23T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-04-26T00:00:00.000Z"
+  },
+  "amount": 1,
+  "milestones": [
+    {
+      "name": "name one",
+      "startDate": {
+        "$date": "2025-04-23T00:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2025-04-26T00:00:00.000Z"
+      },
+      "percentage": 20,
+      "amount": 0.2,
+      "amountReceived": 0.2,
+      "paymentStatus": "Paid",
+      "status": "Completed",
+      "ordinal": 0,
+      "_id": {
+        "$oid": "6808c1973706b7387f0190c5"
+      }
+    },
+    {
+      "name": "name two",
+      "startDate": {
+        "$date": "2025-04-23T00:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2025-04-26T00:00:00.000Z"
+      },
+      "percentage": 20,
+      "amount": 0.2,
+      "amountReceived": 0.2,
+      "paymentStatus": "Paid",
+      "status": "Completed",
+      "ordinal": 1,
+      "_id": {
+        "$oid": "6808c1973706b7387f0190c6"
+      }
+    },
+    {
+      "name": "name three",
+      "startDate": {
+        "$date": "2025-04-23T00:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2025-04-26T00:00:00.000Z"
+      },
+      "percentage": 20,
+      "amount": 0.2,
+      "amountReceived": 0.2,
+      "paymentStatus": "Paid",
+      "status": "In Progress",
+      "ordinal": 2,
+      "_id": {
+        "$oid": "6808c1973706b7387f0190c7"
+      }
+    },
+    {
+      "name": "name four",
+      "startDate": {
+        "$date": "2025-04-23T00:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2025-04-26T00:00:00.000Z"
+      },
+      "percentage": 20,
+      "amount": 0.2,
+      "amountReceived": 0,
+      "paymentStatus": "Due",
+      "status": "Pending",
+      "ordinal": 3,
+      "_id": {
+        "$oid": "6808c1973706b7387f0190c8"
+      }
+    },
+    {
+      "name": "name five",
+      "startDate": {
+        "$date": "2025-04-23T00:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2025-04-26T00:00:00.000Z"
+      },
+      "percentage": 20,
+      "amount": 0.2,
+      "amountReceived": 0,
+      "paymentStatus": "Due",
+      "status": "Pending",
+      "ordinal": 4,
+      "_id": {
+        "$oid": "6808c1973706b7387f0190c9"
+      }
+    }
+  ],
+  "contractRateType": "Hourly",
+  "contractRate": 1,
+  "payForEachInvoiceDue": "1",
+  "chargesOnLatePayment": "1",
+  "terminationPeriod": "1",
+  "anyReasonableExpenses": 1,
+  "isSubContractAllowed": false,
+  "scopeOfWork": "projects/promoter-documents/e4d5feea3b84b24e7cf6d89365df91.png",
+  "witnesses": [
+    {
+      "name": "name",
+      "countryCode": "+91",
+      "phone": "2121212212",
+      "email": "name@yopmail.com",
+      "address": "121212121",
+      "document": "projects/promoter-documents/f46f8d7c2f9c2d5f9ec6222c71a629.png",
+      "_id": {
+        "$oid": "6808c1973706b7387f0190ca"
+      }
+    }
+  ],
+  "generatedReferenceNo": "#CON/CLP-PHASE/2025/3",
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-04-23T10:31:51.352Z"
+  },
+  "updatedAt": null,
+  "__v": 0
+}
+........................................................  
+
+counters:
+
+{
+  "_id": { "$oid": "67ab2d41e90012bc0839ec7c" },
+  "company": { "$oid": "67a32adab2287ab1b5a1db29" },
+  "__v": 0,
+  "counts": {
+    "lead": 10
+  },
+  "createdAt": { "$date": "2025-02-11T10:58:09.105Z" },
+  "updatedAt": { "$date": "2025-02-11T12:30:45.454Z" }
+}
+...........................................................
+
+countries :
+
+{
+  "_id": ObjectId("671a0a362ad9f571b6d98d1c"),
+  "name": "Afghanistan",
+  "iso2": "AF",
+  "phoneCode": "+93",
+  "capital": "Kabul",
+  "currency": "AFN",
+  "currencySymbol": "؋",
+  "emoji": "🇦🇫",
+  "states": [
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d1d"),
+      "name": "Badakhshan",
+      "stateCode": "BDS",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d1e"), "name": "Ashkāsham" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d1f"), "name": "Fayzabad" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d20"), "name": "Jurm" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d21"), "name": "Khandūd" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d22"), "name": "Rāghistān" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d23"), "name": "Wākhān" }
+      ]
+    },
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d24"),
+      "name": "Badghis",
+      "stateCode": "BDG",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d25"), "name": "Ghormach" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d26"), "name": "Qala i Naw" }
+      ]
+    },
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d27"),
+      "name": "Baghlan",
+      "stateCode": "BGL",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d28"), "name": "Baghlān" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d29"), "name": "Ḩukūmatī Dahanah-ye Ghōrī" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d2a"), "name": "Nahrīn" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d2b"), "name": "Pul-e Khumrī" }
+      ]
+    },
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d2c"),
+      "name": "Balkh",
+      "stateCode": "BAL",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d2d"), "name": "Balkh" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d2e"), "name": "Dowlatābād" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d2f"), "name": "Khulm" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d30"), "name": "Lab-Sar" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d31"), "name": "Mazār-e Sharīf" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d32"), "name": "Qarchī Gak" }
+      ]
+    },
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d33"),
+      "name": "Bamyan",
+      "stateCode": "BAM",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d34"), "name": "Bāmyān" },
+        { "_id": ObjectId("671a0a362ad9f571b6d98d35"), "name": "Panjāb" }
+      ]
+    },
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d36"),
+      "name": "Daykundi",
+      "stateCode": "DAY",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d37"), "name": "Nīlī" }
+      ]
+    },
+    {
+      "_id": ObjectId("671a0a362ad9f571b6d98d38"),
+      "name": "Farah",
+      "stateCode": "FRA",
+      "cities": [
+        { "_id": ObjectId("671a0a362ad9f571b6d98d39"), "name": "Farah" }
+      ]
+    }
+    // Add more states similarly...
+  ]
+}
+...............................................
+
+designations :
+
+{
+  "_id": ObjectId("6785f7676769548b89bdbe57"),
+  "name": "Sales and Marketing",
+  "status": "Active",
+  "createdAt": ISODate("2025-01-14T05:34:31.767Z"),
+  "updatedAt": ISODate("2025-01-14T05:34:31.767Z"),
+  "__v": 0
+}
+......................................................
+
+documents-and-priorities:
+
+{
+  "_id": ObjectId("67860e8042a84c578c7490c7"),
+  "company": ObjectId("67860e8042a84c578c7490bf"),
+  "documentType": "Welcome Letter",
+  "templateName": "Welcome Letter",
+  "priority": 3,
+  "paymentTerm": "On the time of Booking",
+  "isMandatory": true,
+  "document": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta cha…",
+  "propertyType": "Residential",
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-14T07:13:04.343Z"),
+  "updatedAt": ISODate("2025-01-14T07:13:04.343Z")
+}
+..............................................................
+
+email-track:
+
+{
+  "_id": ObjectId("6788a4b7865bf0ed8061d323"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "campaign": ObjectId("6788a4b7865bf0ed8061d320"),
+  "email": "shreyaparashar38@gmail.com",
+  "target": ObjectId("6788a1efab94fc34722a83a4"),
+  "subject": "Hiii Welcome tp Email Campaign",
+  "message": "<p>Dear XYZ,</p><p>Thank you for choosing our company services. We are…</p>",
+  "emailStatus": "Delivered",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-16T06:18:31.426Z"),
+  "updatedAt": ISODate("2025-01-16T06:18:31.456Z")
+}
+..............................................................
+
+general-expenses:
+
+{
+  "_id": ObjectId("67a99aefa6c53aae568266c3"),
+  "company": ObjectId("67860e8042a84c578c7490bf"),
+  "payeeName": "Amena Sandoval",
+  "expenseType": "Against Salary",
+  "amount": 620000,
+  "taxes": 6400,
+  "payableAmount": 626400,
+  "paymentMode": "Online",
+  "remarks": "Id pariatur Minim v",
+  "dateOfPayment": ISODate("2025-02-21T00:00:00.000Z"),
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2025-02-10T06:21:35.779Z"),
+  "updatedAt": ISODate("2025-02-10T06:21:35.779Z")
+}
+..............................................................
+
+groups : 
+
+{
+  "_id": ObjectId("679c81de81f0fa8cd9893f07"),
+  "company": ObjectId("679c7f3e3f2943b4a747bcc2"),
+  "name": "Group 1",
+  "members": [
+    ObjectId("679c823981f0fa8cd9893f4b"),
+    ObjectId("679c828081f0fa8cd9893f6f"),
+    ObjectId("679c82b981f0fa8cd9893f93"),
+    ObjectId("679c82ec81f0fa8cd9893fbd"),
+    ObjectId("679c831d81f0fa8cd9893fde")
+  ],
+  "status": "Active",
+  "createdAt": ISODate("2025-01-31T07:55:10.628Z"),
+  "updatedAt": ISODate("2025-01-31T08:09:16.175Z"),
+  "__v": 0,
+  "permissions": {
+    "brokers": [
+      "brokers-list",
+      "brokers-add",
+      "brokers-view",
+      "brokers-update",
+      "brokers-delete"
+    ],
+    "campaigns_templates": [
+      "campaigns_templates-list",
+      "campaigns_templates-add",
+      "campaigns_templates-view",
+      "campaigns_templates-update",
+      "campaigns_templates-delete"
+    ],
+    "contacts_tags": [
+      "contacts_tags-list",
+      "contacts_tags-add",
+      "contacts_tags-view",
+      "contacts_tags-update",
+      "contacts_tags-delete"
+    ],
+    "contacts": [
+      "contacts-list",
+      "contacts-add",
+      "contacts-view",
+      "contacts-update",
+      "contacts-delete",
+      "contacts-import-csv"
+    ],
+    "documents_priorities": [
+      "documents_priorities-list",
+      "documents_priorities-add",
+      "documents_priorities-view",
+      "documents_priorities-update",
+      "documents_priorities-update-document"
+    ],
+    "campaigns_email": [
+      "campaigns_email-list",
+      "campaigns_email-add",
+      "campaigns_email-view",
+      "campaigns_email-update",
+      "campaigns_email-delete"
+    ],
+    "campaigns_facebook": [
+      "campaigns_facebook-list",
+      "campaigns_facebook-add",
+      "campaigns_facebook-update",
+      "campaigns_facebook-delete"
+    ],
+    "finance": [
+      "finance-brokers-payments-list",
+      "finance-brokers-payments-mark-as-paid"
+    ],
+    "generals_expenses": [
+      "generals_expenses-list",
+      "generals_expenses-add",
+      "generals_expenses-view",
+      "generals_expenses-update",
+      "generals_expenses-delete"
+    ],
+    "groups": [
+      "groups-list",
+      "groups-add",
+      "groups-view",
+      "groups-update",
+      "groups-delete"
+    ],
+    "campaigns_instagram": [
+      "campaigns_instagram-add"
+    ],
+    "lands": [
+      "lands-list",
+      "lands-add",
+      "lands-view",
+      "lands-update",
+      "lands-delete",
+      "lands-export-pdf",
+      "lands-export-csv"
+    ],
+    "leads": [
+      "leads-list",
+      "leads-my-leads-list",
+      "leads-team-leads-list",
+      "leads-add",
+      "leads-view",
+      "leads-update",
+      "leads-delete",
+      "leads-export-pdf",
+      "leads-export-csv",
+      "leads-assign",
+      "leads-assignment",
+      "leads-bulk-assign",
+      "leads-bulk-delete",
+      "leads-notes-list",
+      "leads-notes-add",
+      "leads-notes-view",
+      "leads-notes-update",
+      "leads-notes-delete"
+    ],
+    "documents_miscellaneous": [
+      "documents_miscellaneous-list",
+      "documents_miscellaneous-add",
+      "documents_miscellaneous-view",
+      "documents_miscellaneous-update",
+      "documents_miscellaneous-delete"
+    ]
+  }
+}
+..................................................
+
+lands : 
+
+{
+  "_id": ObjectId("67861d650e5049e35aeafc6b"),
+  "company": ObjectId("678611fa42a84c578c749155"),
+  "name": "hare",
+  "propertyType": [
+    "Residential"
+  ],
+  "address": "extaionsion",
+  "country": ObjectId("671a0a3c2ad9f571b6da4390"),
+  "state": ObjectId("671a0a3c2ad9f571b6da443f"),
+  "city": ObjectId("671a0a3c2ad9f571b6da4444"),
+  "zipCode": "4536446",
+  "coordinates": [
+    545445454,
+    5455445
+  ],
+  "purchasePrice": 1100000,
+  "currentMarketValue": 1000000,
+  "propertyTaxRefNo": "GFDHGD564",
+  "isOnLease": false,
+  "occupancyStatus": "Vacant",
+  "leaseAgreementDocs": [],
+  "isAnyConstructionExists": false,
+  "plotSize": 6767,
+  "sizeType": "Hectares",
+  "amenities": [
+    ObjectId("6785e60b6769548b89bdabcb")
+  ],
+  "ownerName": "subodh",
+  "ownerEmail": "subodh@yopmail.com",
+  "ownerCountryCode": "+91",
+  "ownerPhone": "3425353363",
+  "pastOwnerCountryCode": "+91",
+  "status": "Active",
+  "createdAt": ISODate("2025-01-14T08:16:37.077Z"),
+  "updatedAt": ISODate("2025-01-14T08:16:37.077Z"),
+  "__v": 0,
+  "embedded": true
+}
+.........................................................
+
+lead-assignments :
+
+{
+  "_id": ObjectId("678638d25f7911e26f14fae8"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "lead": ObjectId("67862c405f7911e26f14f7bd"),
+  "team": ObjectId("67861cb2f36e66f1317e806e"),
+  "defaultPrimary": ObjectId("67861b46f36e66f1317e7f41"),
+  "defaultSecondary": ObjectId("67861a69f36e66f1317e7ec0"),
+  "assignee": ObjectId("67861bbcf36e66f1317e7fd0"),
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-14T10:13:38.674Z"),
+  "updatedAt": ISODate("2025-01-14T10:13:38.674Z")
+}
+...............................................................
+
+lead-notes :
+
+{
+  "_id": ObjectId("678a36b65f7911e26f150fd8"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "lead": ObjectId("678a366e5f7911e26f150fc4"),
+  "communicationType": "WhatsApp",
+  "meetingDateTime": ISODate("2025-01-17T00:00:00.000Z"),
+  "siteVisitStatus": "Visited",
+  "siteVisitScheduledDate": ISODate("2025-01-17T00:00:00.000Z"),
+  "nextSiteVisitScheduledDate": ISODate("2025-01-17T00:00:00.000Z"),
+  "tag": ObjectId("6789f7fd35ea2de3d0233061"),
+  "remarks": "Tomorrow They will give Advance Payment also",
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-17T10:53:42.121Z"),
+  "updatedAt": ISODate("2025-01-17T10:53:42.121Z")
+}
+................................................................
+
+lead-rotations:
+
+{
+  "_id": ObjectId("67ab252fd148e5b444e6e959"),
+  "company": ObjectId("6786104742a84c578c7490f0"),
+  "lead": ObjectId("679ca0d912bfcfa1d18112cc"),
+  "team": ObjectId("679c6ffd81f0fa8cd98937dc"),
+  "assignee": ObjectId("679c6d2f81f0fa8cd989362c"),
+  "date": ISODate("2025-02-11T00:00:00.000Z"),
+  "createdAt": ISODate("2025-02-11T10:23:43.928Z"),
+  "updatedAt": ISODate("2025-02-11T10:23:43.928Z"),
+  "__v": 0
+}
+..............................................................
+
+lead-visited-properties:
+
+{
+  "_id": {
+    "$oid": "67ea99a90af7984a8e1fa868"
+  },
+  "company": {
+    "$oid": "67ea1eccda12739f19f72892"
+  },
+  "lead": {
+    "$oid": "67ea7be40af7984a8e1fa682"
+  },
+  "property": {
+    "$oid": "67ea5dcb938b500dadea2ed4"
+  },
+  "remarks": "lead visited",
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-03-31T13:33:29.499Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-31T13:33:29.499Z"
+  },
+  "__v": 0
+}
+................................................
+
+leads :
+
+{
+  "_id": ObjectId("678633df5f7911e26f14fa71"),
+  "company": ObjectId("678611fa42a84c578c749155"),
+  "leadNo": "#36",
+  "name": "Sonu Sharma",
+  "countryCode": "+91",
+  "phone": "9436457464",
+  "sourceType": "Broker",
+  "broker": ObjectId("67861b976769548b89be2353"),
+  "commissionPercent": 3,
+  "minBudget": 10000000,
+  "maxBudget": 30000000,
+  "buyingTimeline": "0 TO 6 months",
+  "leadStatus": "Temporary Converted",
+  "rotationCount": 0,
+  "lastActivity": ISODate("2025-01-14T09:52:31.019Z"),
+  "status": "Active",
+  "createdAt": ISODate("2025-01-14T09:52:31.021Z"),
+  "updatedAt": ISODate("2025-01-14T09:54:03.130Z"),
+  "__v": 0,
+  "embedded": true
+}
+.......................................................
+
+miscellaneous-documents:
+
+{
+  "_id": ObjectId("67977367d4fd2932de7643bc"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "project": ObjectId("678dfe75715a4f617b8c0f3c"),
+  "property": ObjectId("678e02864a070a1175a27ffc"),
+  "booking": ObjectId("67908c4e7467fa400ee040af"),
+  "name": "erfefvdrg",
+  "url": "lands/lease-agreements/7bd5f3a01d7b7565b2ce1678ab1438.pdf",
+  "status": "Archived",
+  "createdAt": ISODate("2025-01-27T11:52:07.977Z"),
+  "updatedAt": ISODate("2025-01-27T11:52:15.555Z"),
+  "__v": 0
+}
+.................................................
+
+onboarding-requests: 
+
+{
+  "_id": {
+    "$oid": "680333f6fba79e7eb3807c28"
+  },
+  "logo": "profile/images/05dbf0bf31d077699b8f29cd98baf5.jpg",
+  "clientName": "Govindam Group",
+  "name": "Govindam Group",
+  "address": "40, Jaipur, Rajasthan",
+  "country": {
+    "$oid": "60db7f01f13d1f1b789abc1d"
+  },
+  "state": {
+    "$oid": "60db7f01f13d1f1b789abc2e"
+  },
+  "city": {
+    "$oid": "60db7f01f13d1f1b789abc3f"
+  },
+  "primaryCountryCode": "+1",
+  "primaryPhone": "1234567890",
+  "secondaryCountryCode": "+1",
+  "secondaryPhone": "1234567890",
+  "primaryEmail": "rutvikpatel@gmail.com",
+  "contactPersonName": "Rutvik patel",
+  "contactPersonCountryCode": "+1",
+  "contactPersonPhone": "1234567890",
+  "contactPersonEmail": "rutvikpatel@gmail.com",
+  "plan": {
+    "$oid": "60db7f01f13d1f1b789abc5a"
+  },
+  "addOnServices": [
+    "Sms",
+    "Email"
+  ],
+  "maxNoOfUsers": 100,
+  "subDomain": "https://govindam.homelead.local",
+  "onboardingStatus": "Pending",
+  "createdAt": {
+    "$date": "2025-04-19T05:26:14.151Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-19T09:03:52.754Z"
+  },
+  "__v": 0
+}
+....................................................
+
+otps:
+
+{
+  "_id": ObjectId("6791eb34d8a1514ce9f68d51"),
+  "email": "akshay@yopmail.com",
+  "company": ObjectId("6791e60f42a84c578c74ba18"),
+  "__v": 0,
+  "createdAt": ISODate("2025-01-23T07:09:40.528Z"),
+  "isVerified": true,
+  "otpType": "FORGOT_PASSWORD",
+  "token": "102021",
+  "updatedAt": ISODate("2025-01-23T07:40:34.426Z"),
+  "validTill": ISODate("2025-01-23T07:45:09.485Z"),
+  "verifyType": "EMAIL"
+}
+........................................................
+
+pages : 
+
+{
+  "_id": ObjectId("6708ad7b36adaf13f34ec542"),
+  "title": "About us",
+  "description": "About us page",
+  "slug": "about",
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2024-10-11T04:45:47.023Z"),
+  "updatedAt": ISODate("2024-10-11T04:45:47.023Z")
+}
+..........................................................
+
+permissions :
+
+{
+  "_id": ObjectId("67680e0cbb50eae47332eaa6"),
+  "name": "Projects Units Sub Types",
+  "slug": "projects_units_sub_types",
+  "actions": [
+    {
+      "name": "List Projects Units Sub Types",
+      "slug": "projects_units_sub_types-list"
+    },
+    {
+      "name": "Add Projects Units Sub Type",
+      "slug": "projects_units_sub_types-add"
+    },
+    {
+      "name": "View Projects Units Sub Type",
+      "slug": "projects_units_sub_types-view"
+    },
+    {
+      "name": "Update Projects Units Sub Type",
+      "slug": "projects_units_sub_types-update"
+    },
+    {
+      "name": "Delete Projects Units Sub Type",
+      "slug": "projects_units_sub_types-delete"
+    }
+  ]
+}
+.....................................................................
+
+
+plans :
+
+{
+  "_id": ObjectId("67a32abbb2287ab1b5a1d9e5"),
+  "name": "All",
+  "slug": "all",
+  "paymentDuration": "Yearly",
+  "price": 100000000,
+  "description": "All permission with many users",
+  "features": [
+    "All permissions"
+  ],
+  "permissions": {
+    "bookings": [
+      "bookings-list", "bookings-add", "bookings-view", "bookings-update",
+      "bookings-cancel-refund", "bookings-accept-reject", "bookings-create-clp",
+      "bookings-available-for-bookings", "bookings-regenerate-property-document", 
+      "bookings-resend-property-document"
+    ],
+    "brokers": [
+      "brokers-list", "brokers-add", "brokers-view", "brokers-update", "brokers-delete"
+    ],
+    "campaigns_templates": [
+      "campaigns_templates-list", "campaigns_templates-add", "campaigns_templates-view", 
+      "campaigns_templates-update", "campaigns_templates-delete"
+    ],
+    "contacts_tags": [
+      "contacts_tags-list", "contacts_tags-add", "contacts_tags-view", 
+      "contacts_tags-update", "contacts_tags-delete"
+    ],
+    "contacts": [
+      "contacts-list", "contacts-add", "contacts-view", "contacts-update", 
+      "contacts-delete", "contacts-import-csv"
+    ],
+    "documents_priorities": [
+      "documents_priorities-list", "documents_priorities-view", "documents_priorities-update", 
+      "documents_priorities-update-document"
+    ],
+    "campaigns_email": [
+      "campaigns_email-list", "campaigns_email-add", "campaigns_email-view", 
+      "campaigns_email-update", "campaigns_email-delete"
+    ],
+    "campaigns_facebook": [
+      "campaigns_facebook-list", "campaigns_facebook-add", "campaigns_facebook-update", 
+      "campaigns_facebook-delete", "campaigns_facebook-post-ad", "campaigns_facebook-post-ad-set"
+    ],
+    "finance": [
+      "finance-brokers-payments-list", "finance-brokers-payments-mark-as-paid"
+    ],
+    "generals_expenses": [
+      "generals_expenses-list", "generals_expenses-add", "generals_expenses-view", 
+      "generals_expenses-update", "generals_expenses-delete"
+    ],
+    "groups": [
+      "groups-list", "groups-add", "groups-view", "groups-update", "groups-delete"
+    ],
+    "campaigns_instagram": [
+      "campaigns_instagram-add"
+    ],
+    "lands": [
+      "lands-list", "lands-add", "lands-view", "lands-update", "lands-delete", 
+      "lands-export-pdf", "lands-export-csv"
+    ],
+    "leads": [
+      "leads-list", "leads-my-leads-list", "leads-team-leads-list", "leads-add", 
+      "leads-view", "leads-update", "leads-delete", "leads-export-pdf", "leads-export-csv", 
+      "leads-assign", "leads-assignment", "leads-bulk-assign", "leads-bulk-delete", 
+      "leads-notes-list", "leads-notes-add", "leads-notes-view", "leads-notes-update", 
+      "leads-notes-delete", "leads-import"
+    ],
+    "ledger_payments": [
+      "ledger_payments-list"
+    ],
+    "documents_miscellaneous": [
+      "documents_miscellaneous-list", "documents_miscellaneous-add", 
+      "documents_miscellaneous-view", "documents_miscellaneous-update", 
+      "documents_miscellaneous-delete"
+    ],
+    "payments": [
+      "payments-list", "payments-clp-payment-list", "payments-booking-payment-list", 
+      "payments-refund-payment-list", "payments-clp-accept-payment"
+    ],
+    "projects": [
+      "projects-list", "projects-add", "projects-view", "projects-update", 
+      "projects-clp-phases-update", "projects-delete", "projects-export-pdf", "projects-export-csv"
+    ],
+    "properties": [
+      "properties-list", "properties-add", "properties-view", "properties-update", 
+      "properties-delete", "properties-list-inventories", "properties-export-pdf", 
+      "properties-export-csv", "properties-import-csv"
+    ],
+    "rent": [
+      "rent-payments-list", "rent-payments-add", "rent-payments-view", 
+      "rent-payments-mark-as-paid", "rent-payments-partial-payments"
+    ],
+    "campaigns_sms": [
+      "campaigns_sms-list", "campaigns_sms-add", "campaigns_sms-view", 
+      "campaigns_sms-update", "campaigns_sms-delete"
+    ],
+    "settings": [
+      "settings-update"
+    ],
+    "subscriptions": [
+      "subscriptions-payments-list", "subscriptions-my-payments-list"
+    ],
+    "tags": [
+      "tags-list", "tags-add", "tags-view", "tags-update", "tags-delete"
+    ],
+    "teams": [
+      "teams-list", "teams-add", "teams-view", "teams-update", "teams-delete"
+    ],
+    "tenants": [
+      "tenants-list", "tenants-add", "tenants-view", "tenants-update", 
+      "tenants-renew-agreement", "tenants-leave"
+    ],
+    "users": [
+      "users-list", "users-add", "users-view", "users-update", "users-update-permission", 
+      "users-update-password", "users-delete"
+    ],
+    "campaigns_whatsapp": [
+      "campaigns_whatsapp-list", "campaigns_whatsapp-add", "campaigns_whatsapp-view", 
+      "campaigns_whatsapp-update", "campaigns_whatsapp-delete"
+    ],
+    "campaigns_youtube": [
+      "campaigns_youtube-add"
+    ]
+  },
+  "maxNoOfUsers": 10000000,
+  "visibleToUser": true,
+  "status": "Active",
+  "__v": 0
+}
+.......................................................................
+
+project-categories :
+
+{
+  "_id": { "$oid": "6785f8226769548b89bdcf0d" },
+  "name": "Education",
+  "status": "Active",
+  "createdAt": { "$date": "2025-01-14T05:37:38.939+00:00" },
+  "updatedAt": { "$date": "2025-01-14T05:37:38.939+00:00" },
+  "__v": 0
+}
+.............................................
+
+projects :
+
+{
+  "_id": { "$oid": "678633f0ad2676b575a29c36" },
+  "company": { "$oid": "6786129d42a84c578c74918c" },
+  "land": { "$oid": "67861ed50e5049e35aeafc8b" },
+  "name": "SkyHeight",
+  "slug": "skyheight",
+  "projectType": ["Residential", "Commercial"],
+  "projectUnitSubType": [
+    { "$oid": "6785f6ee6769548b89bdbdfc" },
+    { "$oid": "6785f4b96769548b89bdbdb1" },
+    { "$oid": "6785f7006769548b89bdbe14" }
+  ],
+  "category": { "$oid": "6785f7a26769548b89bdcef5" },
+  "projectStatus": "Ready to shift",
+  "minBudget": 150000,
+  "maxBudget": 300000,
+  "startDate": { "$date": "2025-01-13T00:00:00.000+00:00" },
+  "completionDate": { "$date": "2025-01-21T00:00:00.000+00:00" },
+  "countryCode": "+91",
+  "phone": "9893255554",
+  "email": "skyheight@yopmail.com",
+  "address": "Mansarovar Industrial and IT Parks",
+  "country": { "$oid": "671a0a3c2ad9f571b6da4390" },
+  "state": { "$oid": "671a0a3c2ad9f571b6da4de3" },
+  "city": { "$oid": "671a0a3c2ad9f571b6da4e27" },
+  "zipCode": "454784",
+  "coordinates": [89, 77],
+  "reraRegistrationNumber": "RERA46637VHJ",
+  "projectRegistrationNumber": "RAJ/75475/HJFKH",
+  "layoutPlanImages": [],
+  "isGovtApproved": false,
+  "govtApprovedDocuments": [],
+  "noOfUnitsResidential": 1,
+  "totalResidential": {},
+  "blocks": [
+    {
+      "blockName": "Block A",
+      "noOfUnits": 1,
+      "noOfUnitsConsumed": 0
+    }
+  ],
+  "floors": [
+    {
+      "floorName": "Ground",
+      "noOfUnits": 1,
+      "noOfUnitsConsumed": 0
+    }
+  ],
+  "units": [
+    {
+      "series": "LA",
+      "projectUnitSubType": { "$oid": "6785f7006769548b89bdbe14" },
+      "bhk": { "$oid": "6785f3ee6769548b89bdbd32" },
+      "noOfUnits": 1,
+      "noOfUnitsConsumed": 0
+    }
+  ],
+  "totalCommercial": {},
+  "blocksCommercial": [
+    {
+      "blockName": "Block B",
+      "noOfUnits": 1,
+      "noOfUnitsConsumed": 0
+    }
+  ],
+  "floorsCommercial": [
+    {
+      "floorName": "First",
+      "noOfUnits": 1,
+      "noOfUnitsConsumed": 0
+    }
+  ],
+  "unitsCommercial": [
+    {
+      "series": "LG",
+      "projectUnitSubType": { "$oid": "6785f4a66769548b89bdbda1" },
+      "noOfUnits": 1,
+      "noOfUnitsConsumed": 0
+    }
+  ],
+  "propertyUnitSubTypesResidential": [
+    { "$oid": "6785f6fa6769548b89bdbe0c" }
+  ],
+  "bhksResidential": [
+    { "$oid": "6785f3eb6769548b89bdbd2a" },
+    { "$oid": "6785f3f56769548b89bdbd42" }
+  ],
+  "bhkTypesResidential": [
+    { "$oid": "6785f4266769548b89bdbd56" },
+    { "$oid": "6785f42b6769548b89bdbd5e" }
+  ],
+  "noOfBlocksResidential": 1,
+  "blocksResidential": [
+    {
+      "blockName": "Block A",
+      "noOfFloors": 1
+    }
+  ],
+  "noOfPhaseCommercial": 1,
+  "noOfUnitsCommercial": 1,
+  "propertyUnitSubTypesCommercial": [],
+  "noOfBlocksCommercial": 1,
+  "blocksCommercial": [
+    {
+      "blockName": "Block B",
+      "noOfFloors": 1
+    }
+  ],
+  "amenities": [
+    { "$oid": "6785f14c6769548b89bdbcd9" },
+    { "$oid": "6785f1236769548b89bdbcc9" },
+    { "$oid": "6785e62e6769548b89bdabd3" },
+    { "$oid": "6785f1756769548b89bdbce1" },
+    { "$oid": "6785f0c96769548b89bdbcab" },
+    { "$oid": "6785f0f36769548b89bdbcbb" },
+    { "$oid": "6785f1366769548b89bdbcd1" },
+    { "$oid": "6785f1856769548b89bdbce9" }
+  ],
+  "nearByLocations": [
+    {
+      "title": "Birla Mandir",
+      "description": "2 Km apart",
+      "_id": { "$oid": "678633f0ad2676b575a29c41" }
+    }
+  ],
+  "images": [],
+  "videos": [],
+  "brochure": [],
+  "qrCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAYAAAAZtYVBAAAA…",
+  "documents": [
+    {
+      "documentName": "Registry",
+      "document": "projects/govt-approval-letters/a7999049b310422b2e48542e41b6a6.jpg",
+      "_id": { "$oid": "678633f0ad2676b575a29c42" }
+    }
+  ],
+  "promoterDetails": [
+    {
+      "promoterName": "Garima Jain",
+      "promoterCountryCode": "+91",
+      "promoterPhone": "9425899262",
+      "_id": { "$oid": "678633f0ad2676b575a29c43" }
+    }
+  ],
+  "financerBankDetails": [
+    { "$oid": "6785f2486769548b89bdbcff" }
+  ],
+  "status": "Active",
+  "clpPhases": [
+    {
+      "name": "Phase 1",
+      "percentage": 100,
+      "ordinal": 0,
+      "status": "Completed",
+      "_id": { "$oid": "678633f0ad2676b575a29c44" }
+    }
+  ],
+  "totalRentRevenue": 0,
+  "totalRentAmountRequired": 0,
+  "totalRentedUnits": 0,
+  "totalSaleRevenue": 0,
+  "totalSaleAmountRequired": 0,
+  "totalBookedUnits": 0,
+  "totalSoldUnits": 0,
+  "totalBookingCancelled": 0,
+  "totalRefundedAmount": 0,
+  "createdAt": { "$date": "2025-01-14T09:52:48.563+00:00" },
+  "updatedAt": { "$date": "2025-01-14T09:52:48.563+00:00" },
+  "__v": 0,
+  "location": {
+    "type": "Point",
+    "coordinates": [26.921367, 75.7425246],
+    "embedded": true
+  }
+}
+...................................................
+
+properties :
+
+{
+  "_id": ObjectId("678622d393a23e15395348de"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "project": ObjectId("67862265ad2676b575a289b5"),
+  "propertyType": "Commercial",
+  "blockName": "BLOCK A",
+  "floorName": "Floor 2",
+  "series": "Series 2",
+  "shopNo": 126,
+  "furnishedStatus": "Semi-Furnished",
+  "minBudget": 1200000,
+  "maxBudget": 1500000,
+  "facing": "North",
+  "vastuCompliant": false,
+  "carpetArea": 1607,
+  "builtUpArea": 2007,
+  "superBuiltUpArea": 2407,
+  "carpetAreaType": "Square Yards",
+  "builtUpAreaType": "Square Yards",
+  "superBuiltUpAreaType": "Square Yards",
+  "noOfBalconies": 1,
+  "noOfBathRooms": 2,
+  "noOfBedRooms": 3,
+  "noOfKitchens": 1,
+  "noOfDrawingRooms": 1,
+  "noOfParkingLots": 2,
+  "images": [],
+  "propertyStatus": "Available",
+  "status": "Active",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-14T08:39:47.693Z"),
+  "updatedAt": ISODate("2025-01-14T08:39:47.693Z"),
+  "embedded": true
+}
+......................................................
+
+property-booking-payments-links:
+
+{
+  "_id": {
+    "$oid": "6810882a46b87a4db234c65d"
+  },
+  "company": {
+    "$oid": "67e7edcada12739f19f72672"
+  },
+  "txnId": "a65df806-94ef-4024-89db-0143760d8e40",
+  "amount": 100000,
+  "paymentStatus": "Due",
+  "generatedReferenceNo": "#PROPLK/2025/1",
+  "dueDate": {
+    "$date": "2025-04-29T08:04:58.744Z"
+  },
+  "paymentInfo": [],
+  "createdAt": {
+    "$date": "2025-04-29T08:04:58.778Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-29T08:04:58.778Z"
+  },
+  "__v": 0
+}
+...............................................
+
+
+property-bookings :
+
+{
+  "_id": ObjectId("6786343bccfefea0f211d6b6"),
+  "company": ObjectId("678611fa42a84c578c749155"),
+  "lead": ObjectId("678633df5f7911e26f14fa71"),
+  "project": ObjectId("6786244cad2676b575a28bc0"),
+  "property": ObjectId("67862f9b93a23e1539534d7d"),
+  "bookingDate": ISODate("2025-01-08T00:00:00.000+00:00"),
+  "panNumber": "SDFSF1252Y",
+  "aadharNumber": "325435363748",
+  "documents": [
+    {
+      "title": "Doc",
+      "document": "property-booking/documents/023a85cd6647f2baf521b1789fee71.png",
+      "_id": ObjectId("6786343bccfefea0f211d6b7")
+    }
+  ],
+  "bookingType": "Temporary Booking",
+  "bookingPaymentStatus": "Due",
+  "financeDeptStatus": "Pending",
+  "status": "Active",
+  "extraCharges": [],
+  "clpPhases": [],
+  "timelineDocuments": [],
+  "createdAt": ISODate("2025-01-14T09:54:03.120+00:00"),
+  "updatedAt": ISODate("2025-01-14T09:54:03.120+00:00"),
+  "__v": 0
+}
+.................................................................
+
+property-payments :
+
+{
+  "_id": ObjectId("67863440ccfefea0f211d6f4"),
+  "company": ObjectId("67860e8042a84c578c7490bf"),
+  "project": ObjectId("678621c7ad2676b575a288f9"),
+  "property": ObjectId("67862e3793a23e1539534bee"),
+  "booking": ObjectId("67863440ccfefea0f211d6ec"),
+  "paymentType": "Booking Amount",
+  "transactionType": "Credit",
+  "amount": 100000,
+  "paymentStatus": "Paid",
+  "financeDeptStatus": "Accepted",
+  "paymentMode": "Online",
+  "receiptNumber": "0081c595-6e3e-4df2-963f-e086c24e9ac4",
+  "remarks": "online payment",
+  "receivedOn": ISODate("2025-01-14T09:54:08.305+00:00"),
+  "createdAt": ISODate("2025-01-14T09:54:08.305+00:00"),
+  "updatedAt": ISODate("2025-01-15T04:38:14.227+00:00"),
+  "__v": 0
+}
+.................................................................
+
+property-unit-sub-types :
+
+{
+  "_id": ObjectId("6785f7006769548b89bdbe14"),
+  "name": "Kothi",
+  "projectType": "Residential",
+  "status": "Active",
+  "createdAt": ISODate("2025-01-14T05:32:48.584+00:00"),
+  "updatedAt": ISODate("2025-01-14T05:32:48.584+00:00"),
+  "__v": 0
+}
+............................................................
+
+rent-payments :
+
+{
+  "_id": ObjectId("6786299d34f6cc0579b663f5"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "project": ObjectId("67862265ad2676b575a289b5"),
+  "property": ObjectId("678622d393a23e15395348d5"),
+  "tenant": ObjectId("6786296f34f6cc0579b66393"),
+  "startDate": ISODate("2025-02-13T00:00:00.000+00:00"),
+  "endDate": ISODate("2025-03-15T23:59:59.999+00:00"),
+  "amount": 6200,
+  "amountPaid": 6200,
+  "paymentStatus": "Paid",
+  "paymentMode": "Cash",
+  "receiptNumber": "687f9019-52ea-4c64-9ad6-de2ef8b12937",
+  "remarks": "Advance Payment Complete",
+  "paymentReceipt": "https://telepathys3.s3.us-east-1.amazonaws.com/rent/payments/e5df0603a…",
+  "partialPayments": [],
+  "createdAt": ISODate("2025-01-14T09:08:45.807+00:00"),
+  "updatedAt": ISODate("2025-01-14T09:08:45.807+00:00"),
+  "__v": 0,
+  "embedded": true
+}
+..................................................
+
+settings:
+
+{
+  "_id": ObjectId("67a5a7818ab74d8c0c169bf9"),
+  "company": ObjectId("67a32ff6981b168d3a9dc72f"),
+  "__v": 0,
+  "attendance": {
+    "isEnabledForAllUsers": false,
+    "isSelfieMandatoryForClockIn": false,
+    "isSelfieMandatoryForClockOut": false,
+    "isShiftTimeEnabledForAllDays": false,
+    "isShiftTimingFeatureEnabled": false,
+    "shiftTimingDayWise": [],
+    "userIds": []
+  },
+  "createdAt": ISODate("2025-02-07T06:26:09.393+00:00"),
+  "general": {
+    "currency": [],
+    "hasCallDetectionActivated": false,
+    "hasCallDetectionForAllLead": "All",
+    "hasInternationalSupport": false,
+    "isWaterMarksOnImagesEnabled": false,
+    "isLandExportEnabled": false,
+    "isProjectExportEnabled": false,
+    "isPropertyExportEnabled": false
+  },
+  "leads": {
+    "assignmentSetPriority": [],
+    "isDuelLeadOwnershipEnabled": false,
+    "isLeadContactInfoMask": false,
+    "isLeadSourceEditable": false,
+    "isLeadsExportEnabled": false
+  },
+  "leadNotes": {
+    "isNotesMandatoryEnabled": false,
+    "isNotesMandatoryOnAddLead": false,
+    "isNotesMandatoryOnMeetingDone": false,
+    "isNotesMandatoryOnSiteVisitDone": false,
+    "isNotesMandatoryOnUpdateLead": false
+  },
+  "security": {
+    "isTwoFactorAuthenticationEnabled": false,
+    "isCopyPasteEnabled": true,
+    "isScreenshotEnabled": false
+  },
+  "updatedAt": ISODate("2025-02-07T06:26:09.393+00:00")
+}
+.........................................................
+
+sms-balance-requests:
+
+{
+  "_id": {
+    "$oid": "6810f176ce81dd029e4d52ad"
+  },
+  "company": {
+    "$oid": "67e7edcada12739f19f72672"
+  },
+  "campaignPayment": {
+    "$oid": "6810f13dce81dd029e4d52a9"
+  },
+  "requestStatus": "Accepted",
+  "status": "Active",
+  "createdAt": {
+    "$date": "2025-04-29T15:34:14.446Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-01T06:38:37.870Z"
+  },
+  "__v": 0
+}
+.................................................
+
+sms-payments:
+
+[ empty now ]
+
+.....................................................
+
+sms-track :
+
+{
+  "_id": ObjectId("67979bb0378a759bcedcf85d"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "campaign": ObjectId("67979bb0378a759bcedcf858"),
+  "countryCode": "+91",
+  "phone": "8962301775",
+  "target": ObjectId("679798059e90d110e95740ee"),
+  "message": "j,iul,iholi",
+  "smsStatus": "Delivered",
+  "__v": 0,
+  "createdAt": ISODate("2025-01-27T14:44:00.145+00:00"),
+  "updatedAt": ISODate("2025-01-27T14:44:00.145+00:00")
+}
+..................................................................
+
+subscription-payments:
+
+{
+  "_id": ObjectId("67861c4542a84c578c749c5c"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "plan": ObjectId("6786048d42a84c578c74726b"),
+  "startDate": ISODate("2025-01-14T08:11:49.161+00:00"),
+  "endDate": ISODate("2026-01-14T08:11:49.000+00:00"),
+  "amount": 75000,
+  "paymentStatus": "Paid",
+  "paymentMode": "Online",
+  "paymentInfo": [],
+  "createdAt": ISODate("2025-01-14T08:11:49.176+00:00"),
+  "updatedAt": ISODate("2025-01-14T08:11:49.176+00:00"),
+  "__v": 0
+}
+....................................................
+
+tags :
+
+{
+  "_id": ObjectId("678df6be35ea2de3d02334f2"),
+  "company": ObjectId("6786134d42a84c578c749310"),
+  "name": "COLD",
+  "description": "Lead type is cold",
+  "icon": "masters/113b538b093d4dd75294cd30da2715.svg",
+  "leadCount": 1,
+  "status": "Active",
+  "isDefault": false,
+  "createdAt": ISODate("2025-01-20T07:09:50.821Z"),
+  "updatedAt": ISODate("2025-01-20T07:11:37.859Z"),
+  "__v": 0
+}
+.................................
+
+tasks:
+
+[empty]
+  "_id": "6788cf6224ecd4f1d0990c7c",
+  "company": "6786134d42a84c578c749310",
+  "project": "6787addead2676b575a93e40",
+  "property": "6787ae7c765f684e5b3c673a",
+  "booking": "67888ded24ecd4f1d098e6aa",
+  "lead": "6787fca05f7911e26f150aa0",
+  "broker": "6787f13e6769548b89bf0ec1",
+................................
+
+teams :
+
+{
+  "_id": ObjectId("6787f5a97b5772d8ee761efe"),
+  "company": ObjectId("6786134d42a84c578c749310"),
+  "name": "Team A",
+  "groups": [
+    ObjectId("6787b6817b5772d8ee76199e")
+  ],
+  "members": [
+    ObjectId("6787f3177b5772d8ee761d8b"),
+    ObjectId("6787f36a7b5772d8ee761daf"),
+    ObjectId("6787f3a27b5772d8ee761dd3"),
+    ObjectId("6787f3e27b5772d8ee761df7")
+  ],
+  "teamLead": ObjectId("6787f3177b5772d8ee761d8b"),
+  "defaultPrimary": ObjectId("6787f36a7b5772d8ee761daf"),
+  "defaultSecondary": ObjectId("6787f3a27b5772d8ee761dd3"),
+  "rotationMembers": [
+    ObjectId("6787f36a7b5772d8ee761daf"),
+    ObjectId("6787f3177b5772d8ee761d8b"),
+    ObjectId("6787f3a27b5772d8ee761dd3"),
+    ObjectId("6787f3e27b5772d8ee761df7")
+  ],
+  "status": "Active",
+  "noOfRotations": 8,
+  "rotationStartTime": "04:34",
+  "rotationEndTime": "13:34",
+  "createdAt": ISODate("2025-01-15T17:51:37.927Z"),
+  "updatedAt": ISODate("2025-01-21T08:20:12.056Z"),
+  "__v": 0
+}
+.........................................................
+
+tenants :
+
+{
+  "_id": ObjectId("6787636b6f80da4604ccf7e9"),
+  "company": ObjectId("6786129d42a84c578c74918c"),
+  "project": ObjectId("6786757bad2676b575a2f6f6"),
+  "property": ObjectId("67869a19765f684e5b3c3638"),
+  "name": "Dolly Tripathi",
+  "countryCode": "+91",
+  "phone": "3565436579",
+  "email": "dolly@yopmail.com",
+  "aadharNo": "677890087657",
+  "panNo": "ASDFG5677I",
+  "avatar": "profile/images/de07251b20dc4e32aaed6537f448e6.jpg",
+  "totalMember": 1,
+  "members": [
+    {
+      "_id": ObjectId("6787636b6f80da4604ccf7ea"),
+      "name": "Purvi",
+      "age": 25,
+      "relation": "Friend"
+    }
+  ],
+  "isPets": false,
+  "bookingDate": ISODate("2025-01-15T00:00:00.000Z"),
+  "bookingType": "Final Booking",
+  "rentAmount": 6500,
+  "rentIncrement": 25,
+  "depositAmount": 2500,
+  "isMaintenanceIncluded": false,
+  "isPoliceVerificationDone": true,
+  "rentStartDate": ISODate("2025-01-15T00:00:00.000Z"),
+  "rentAgreementStartDate": ISODate("2025-01-15T00:00:00.000Z"),
+  "rentAgreements": [
+    "projects/govt-approval-letters/5a26e1cbc371a0bad93defe0a15f4a.jpg"
+  ],
+  "dueRentAmount": 0,
+  "rentPaymentGeneratedOn": ISODate("2025-03-16T23:59:59.999Z"),
+  "tenantStatus": "Left",
+  "status": "Active",
+  "adjustedDepositAmount": 0,
+  "leavingDate": ISODate("2025-01-15T00:00:00.000Z"),
+  "createdAt": ISODate("2025-01-15T07:27:39.468Z"),
+  "updatedAt": ISODate("2025-01-15T07:44:06.119Z"),
+  "__v": 0
+}
+...............................................
+
+user-sessions:
+
+{
+  "_id": "nu4CXEurt4vhXIq6c9FiT8IboVzyplRP",
+  "expires": ISODate("2025-02-19T04:17:38.282Z"),
+  "session": "{\"cookie\":{\"originalMaxAge\":2592000000,\"expires\":\"2025-02-19T04:17:38.282Z\",\"secure\":false,\"httpOnly\":true,\"path\":\"/\"},\"user\":{\"_id\":\"USER_ID_HERE\",\"email\":\"user@example.com\"}}"
+}
+................................................................
+
+users :
+
+{
+  "_id": "6787f3a27b5772d8ee761dd3",
+  "company": "6786134d42a84c578c749310",
+  "firstName": "giris",
+  "lastName": "thakur",
+  "fullName": "giris thakur",
+  "email": "giris@yopmail.com",
+  "countryCode": "+91",
+  "phone": "9823754763",
+  "formattedPhone": "+91-9823754763",
+  "password": "$2a$12$.iQJ4RjedzWMMe2yErflz.xpLjXudieB/OIoVlZ2hxxOAtPiQrcz6",
+  "groups": ["6787b6817b5772d8ee76199e"],
+  "designation": "6785f7526769548b89bdbe47",
+  "isReportingManager": true,
+  "reportsTo": "6787f36a7b5772d8ee761daf",
+  "accountType": "Company Sub Admin",
+  "status": "Active",
+  "failedLoginAttempts": 0,
+  "preventLoginTill": 0,
+  "authTokenIssuedAt": 0,
+  "askForPasswordReset": false,
+  "isFake": false,
+  "noOfLeadsAssigned": 0,
+  "createdAt": "2025-01-15T17:42:58.789Z",
+  "updatedAt": "2025-02-05T14:13:57.421Z",
+  "__v": 0
+}
+..................................................
+
+whatsapp-track :
+
+{
+  "_id": "6788a22eab94fc34722a83ba",
+  "company": "6786129d42a84c578c74918c",
+  "campaign": "6788a22cab94fc34722a83b7",
+  "countryCode": "+91",
+  "phone": "7566161319",
+  "target": "6788a1efab94fc34722a83a4",
+  "message": "Hii Shreya Parashar\nWelcome to telepathy\n\n*Sent by HomeLead*",
+  "whatsAppMessageStatus": "Delivered",
+  "__v": 0,
+  "createdAt": "2025-01-16T06:07:42.783Z",
+  "updatedAt": null
+}
+  
+  

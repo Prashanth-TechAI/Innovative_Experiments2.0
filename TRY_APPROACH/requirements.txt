@@ -1,0 +1,8 @@
+streamlit>=1.28.0
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+Pillow>=10.0.0
+requests>=2.31.0
+pathlib2>=2.3.7
+
+pip install google-genai>=1.5.0
