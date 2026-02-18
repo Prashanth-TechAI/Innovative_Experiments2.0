@@ -1,0 +1,553 @@
+collectionSchema.ts:
+
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+import { getSimplifiedSchema } from "mongodb-schema";
+
+export class CollectionSchemaTool extends MongoDBToolBase {
+    protected name = "collection-schema";
+    protected description = "Describe the schema for a collection";
+    protected argsShape = DbOperationArgs;
+
+    protected operationType: OperationType = "metadata";
+
+    protected async execute({ database, collection }: ToolArgs<typeof DbOperationArgs>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const documents = await provider.find(database, collection, {}, { limit: 5 }).toArray();
+        const schema = await getSimplifiedSchema(documents);
+
+        const fieldsCount = Object.entries(schema).length;
+        if (fieldsCount === 0) {
+            return {
+                content: [
+                    {
+                        text: `Could not deduce the schema for "${database}.${collection}". This may be because it doesn't exist or is empty.`,
+                        type: "text",
+                    },
+                ],
+            };
+        }
+
+        return {
+            content: [
+                {
+                    text: `Found ${fieldsCount} fields in the schema for "${database}.${collection}"`,
+                    type: "text",
+                },
+                {
+                    text: JSON.stringify(schema),
+                    type: "text",
+                },
+            ],
+        };
+    }
+}
+
+..............................................................
+
+connect.ts:
+
+import { z } from "zod";
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import assert from "assert";
+import { UserConfig } from "../../../config.js";
+import { Telemetry } from "../../../telemetry/telemetry.js";
+import { Session } from "../../../session.js";
+
+const disconnectedSchema = z
+    .object({
+        connectionString: z.string().describe("MongoDB connection string (in the mongodb:// or mongodb+srv:// format)"),
+    })
+    .describe("Options for connecting to MongoDB.");
+
+const connectedSchema = z
+    .object({
+        connectionString: z
+            .string()
+            .optional()
+            .describe("MongoDB connection string to switch to (in the mongodb:// or mongodb+srv:// format)"),
+    })
+    .describe(
+        "Options for switching the current MongoDB connection. If a connection string is not provided, the connection string from the config will be used."
+    );
+
+const connectedName = "switch-connection" as const;
+const disconnectedName = "connect" as const;
+
+const connectedDescription =
+    "Switch to a different MongoDB connection. If the user has configured a connection string or has previously called the connect tool, a connection is already established and there's no need to call this tool unless the user has explicitly requested to switch to a new instance.";
+const disconnectedDescription = "Connect to a MongoDB instance";
+
+export class ConnectTool extends MongoDBToolBase {
+    protected name: typeof connectedName | typeof disconnectedName = disconnectedName;
+    protected description: typeof connectedDescription | typeof disconnectedDescription = disconnectedDescription;
+
+    // Here the default is empty just to trigger registration, but we're going to override it with the correct
+    // schema in the register method.
+    protected argsShape = {
+        connectionString: z.string().optional(),
+    };
+
+    protected operationType: OperationType = "metadata";
+
+    constructor(session: Session, config: UserConfig, telemetry: Telemetry) {
+        super(session, config, telemetry);
+        session.on("close", () => {
+            this.updateMetadata();
+        });
+    }
+
+    protected async execute({ connectionString }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+        switch (this.name) {
+            case disconnectedName:
+                assert(connectionString, "Connection string is required");
+                break;
+            case connectedName:
+                connectionString ??= this.config.connectionString;
+                assert(
+                    connectionString,
+                    "Cannot switch to a new connection because no connection string was provided and no default connection string is configured."
+                );
+                break;
+        }
+
+        await this.connectToMongoDB(connectionString);
+        this.updateMetadata();
+        return {
+            content: [{ type: "text", text: "Successfully connected to MongoDB." }],
+        };
+    }
+
+    public register(server: McpServer): void {
+        super.register(server);
+
+        this.updateMetadata();
+    }
+
+    private updateMetadata(): void {
+        if (this.config.connectionString || this.session.serviceProvider) {
+            this.update?.({
+                name: connectedName,
+                description: connectedDescription,
+                inputSchema: connectedSchema,
+            });
+        } else {
+            this.update?.({
+                name: disconnectedName,
+                description: disconnectedDescription,
+                inputSchema: disconnectedSchema,
+            });
+        }
+    }
+}
+
+...........................................................
+
+dbStats.ts:
+
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+import { EJSON } from "bson";
+
+export class DbStatsTool extends MongoDBToolBase {
+    protected name = "db-stats";
+    protected description = "Returns statistics that reflect the use state of a single database";
+    protected argsShape = {
+        database: DbOperationArgs.database,
+    };
+
+    protected operationType: OperationType = "metadata";
+
+    protected async execute({ database }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const result = await provider.runCommandWithCheck(database, {
+            dbStats: 1,
+            scale: 1,
+        });
+
+        return {
+            content: [
+                {
+                    text: `Statistics for database ${database}`,
+                    type: "text",
+                },
+                {
+                    text: EJSON.stringify(result),
+                    type: "text",
+                },
+            ],
+        };
+    }
+}
+
+...............................................................
+
+explain.ts:
+
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+import { z } from "zod";
+import { ExplainVerbosity, Document } from "mongodb";
+import { AggregateArgs } from "../read/aggregate.js";
+import { FindArgs } from "../read/find.js";
+import { CountArgs } from "../read/count.js";
+
+export class ExplainTool extends MongoDBToolBase {
+    protected name = "explain";
+    protected description =
+        "Returns statistics describing the execution of the winning plan chosen by the query optimizer for the evaluated method";
+
+    protected argsShape = {
+        ...DbOperationArgs,
+        method: z
+            .array(
+                z.union([
+                    z.object({
+                        name: z.literal("aggregate"),
+                        arguments: z.object(AggregateArgs),
+                    }),
+                    z.object({
+                        name: z.literal("find"),
+                        arguments: z.object(FindArgs),
+                    }),
+                    z.object({
+                        name: z.literal("count"),
+                        arguments: z.object(CountArgs),
+                    }),
+                ])
+            )
+            .describe("The method and its arguments to run"),
+    };
+
+    protected operationType: OperationType = "metadata";
+
+    static readonly defaultVerbosity = ExplainVerbosity.queryPlanner;
+
+    protected async execute({
+        database,
+        collection,
+        method: methods,
+    }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const method = methods[0];
+
+        if (!method) {
+            throw new Error("No method provided. Expected one of the following: `aggregate`, `find`, or `count`");
+        }
+
+        let result: Document;
+        switch (method.name) {
+            case "aggregate": {
+                const { pipeline } = method.arguments;
+                result = await provider
+                    .aggregate(
+                        database,
+                        collection,
+                        pipeline,
+                        {},
+                        {
+                            writeConcern: undefined,
+                        }
+                    )
+                    .explain(ExplainTool.defaultVerbosity);
+                break;
+            }
+            case "find": {
+                const { filter, ...rest } = method.arguments;
+                result = await provider
+                    .find(database, collection, filter as Document, { ...rest })
+                    .explain(ExplainTool.defaultVerbosity);
+                break;
+            }
+            case "count": {
+                const { query } = method.arguments;
+                result = await provider.mongoClient.db(database).command({
+                    explain: {
+                        count: collection,
+                        query,
+                    },
+                    verbosity: ExplainTool.defaultVerbosity,
+                });
+                break;
+            }
+        }
+
+        return {
+            content: [
+                {
+                    text: `Here is some information about the winning plan chosen by the query optimizer for running the given \`${method.name}\` operation in "${database}.${collection}". This information can be used to understand how the query was executed and to optimize the query performance.`,
+                    type: "text",
+                },
+                {
+                    text: JSON.stringify(result),
+                    type: "text",
+                },
+            ],
+        };
+    }
+}
+
+.........................................................
+
+listCollections.ts:
+
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+
+export class ListCollectionsTool extends MongoDBToolBase {
+    protected name = "list-collections";
+    protected description = "List all collections for a given database";
+    protected argsShape = {
+        database: DbOperationArgs.database,
+    };
+
+    protected operationType: OperationType = "metadata";
+
+    protected async execute({ database }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const collections = await provider.listCollections(database);
+
+        if (collections.length === 0) {
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: `No collections found for database "${database}". To create a collection, use the "create-collection" tool.`,
+                    },
+                ],
+            };
+        }
+
+        return {
+            content: collections.map((collection) => {
+                return {
+                    text: `Name: "${collection.name}"`,
+                    type: "text",
+                };
+            }),
+        };
+    }
+}
+
+...........................................................
+
+aggregate.ts:
+
+import { z } from "zod";
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+import { EJSON } from "bson";
+
+export const AggregateArgs = {
+    pipeline: z.array(z.record(z.string(), z.unknown())).describe("An array of aggregation stages to execute"),
+};
+
+export class AggregateTool extends MongoDBToolBase {
+    protected name = "aggregate";
+    protected description = "Run an aggregation against a MongoDB collection";
+    protected argsShape = {
+        ...DbOperationArgs,
+        ...AggregateArgs,
+    };
+    protected operationType: OperationType = "read";
+
+    protected async execute({
+        database,
+        collection,
+        pipeline,
+    }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const documents = await provider.aggregate(database, collection, pipeline).toArray();
+
+        const content: Array<{ text: string; type: "text" }> = [
+            {
+                text: `Found ${documents.length} documents in the collection "${collection}":`,
+                type: "text",
+            },
+            ...documents.map((doc) => {
+                return {
+                    text: EJSON.stringify(doc),
+                    type: "text",
+                } as { text: string; type: "text" };
+            }),
+        ];
+
+        return {
+            content,
+        };
+    }
+}
+
+.......................................................
+
+collectionIndexes.ts:
+
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+
+export class CollectionIndexesTool extends MongoDBToolBase {
+    protected name = "collection-indexes";
+    protected description = "Describe the indexes for a collection";
+    protected argsShape = DbOperationArgs;
+    protected operationType: OperationType = "read";
+
+    protected async execute({ database, collection }: ToolArgs<typeof DbOperationArgs>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const indexes = await provider.getIndexes(database, collection);
+
+        return {
+            content: [
+                {
+                    text: `Found ${indexes.length} indexes in the collection "${collection}":`,
+                    type: "text",
+                },
+                ...(indexes.map((indexDefinition) => {
+                    return {
+                        text: `Name "${indexDefinition.name}", definition: ${JSON.stringify(indexDefinition.key)}`,
+                        type: "text",
+                    };
+                }) as { text: string; type: "text" }[]),
+            ],
+        };
+    }
+
+    protected handleError(
+        error: unknown,
+        args: ToolArgs<typeof this.argsShape>
+    ): Promise<CallToolResult> | CallToolResult {
+        if (error instanceof Error && "codeName" in error && error.codeName === "NamespaceNotFound") {
+            return {
+                content: [
+                    {
+                        text: `The indexes for "${args.database}.${args.collection}" cannot be determined because the collection does not exist.`,
+                        type: "text",
+                    },
+                ],
+            };
+        }
+
+        return super.handleError(error, args);
+    }
+}
+
+............................................................
+
+count.ts:
+
+import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+import { ToolArgs, OperationType } from "../../tool.js";
+import { z } from "zod";
+
+export const CountArgs = {
+    query: z
+        .record(z.string(), z.unknown())
+        .optional()
+        .describe(
+            "A filter/query parameter. Allows users to filter the documents to count. Matches the syntax of the filter argument of db.collection.count()."
+        ),
+};
+
+export class CountTool extends MongoDBToolBase {
+    protected name = "count";
+    protected description =
+        "Gets the number of documents in a MongoDB collection using db.collection.count() and query as an optional filter parameter";
+    protected argsShape = {
+        ...DbOperationArgs,
+        ...CountArgs,
+    };
+
+    protected operationType: OperationType = "read";
+
+    protected async execute({ database, collection, query }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+        const provider = await this.ensureConnected();
+        const count = await provider.count(database, collection, query);
+
+        return {
+            content: [
+                {
+                    text: `Found ${count} documents in the collection "${collection}"`,
+                    type: "text",
+                },
+            ],
+        };
+    }
+}
+
+.....................................................
+
+    find.ts:
+
+    import { z } from "zod";
+    import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+    import { DbOperationArgs, MongoDBToolBase } from "../mongodbTool.js";
+    import { ToolArgs, OperationType } from "../../tool.js";
+    import { SortDirection } from "mongodb";
+    import { EJSON } from "bson";
+
+    export const FindArgs = {
+        filter: z
+            .record(z.string(), z.unknown())
+            .optional()
+            .describe("The query filter, matching the syntax of the query argument of db.collection.find()"),
+        projection: z
+            .record(z.string(), z.unknown())
+            .optional()
+            .describe("The projection, matching the syntax of the projection argument of db.collection.find()"),
+        limit: z.number().optional().default(10).describe("The maximum number of documents to return"),
+        sort: z
+            .record(z.string(), z.custom<SortDirection>())
+            .optional()
+            .describe("A document, describing the sort order, matching the syntax of the sort argument of cursor.sort()"),
+    };
+
+    export class FindTool extends MongoDBToolBase {
+        protected name = "find";
+        protected description = "Run a find query against a MongoDB collection";
+        protected argsShape = {
+            ...DbOperationArgs,
+            ...FindArgs,
+        };
+        protected operationType: OperationType = "read";
+
+        protected async execute({
+            database,
+            collection,
+            filter,
+            projection,
+            limit,
+            sort,
+        }: ToolArgs<typeof this.argsShape>): Promise<CallToolResult> {
+            const provider = await this.ensureConnected();
+            const documents = await provider.find(database, collection, filter, { projection, limit, sort }).toArray();
+
+            const content: Array<{ text: string; type: "text" }> = [
+                {
+                    text: `Found ${documents.length} documents in the collection "${collection}":`,
+                    type: "text",
+                },
+                ...documents.map((doc) => {
+                    return {
+                        text: EJSON.stringify(doc),
+                        type: "text",
+                    } as { text: string; type: "text" };
+                }),
+            ];
+
+            return {
+                content,
+            };
+        }
+    }
+
+............................................
+
