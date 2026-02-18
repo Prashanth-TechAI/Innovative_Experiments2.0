@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pandas
+pandasai
+langchain-groq
+pymongo
+bson
+psycopg2-binary
+numpy==1.26.4
+pandas

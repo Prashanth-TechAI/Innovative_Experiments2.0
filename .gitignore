@@ -1,0 +1,135 @@
+# ===================================
+# Environment / Secrets
+# ===================================
+.env
+.env.*
+!.env.example
+
+# Generic secrets / keys
+*.pem
+*.key
+*.crt
+*.p12
+*.keystore
+credentials.json
+secrets.json
+
+
+# ===================================
+# OS-specific files
+# ===================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===================================
+# Logs
+# ===================================
+*.log
+*.out
+*.err
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===================================
+# Python
+# ===================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+*.manifest
+*.spec
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Bytecode caches
+.mypy_cache/
+.pytest_cache/
+coverage/
+htmlcov/
+.tox/
+.cache/
+
+# ===================================
+# Node.js (if frontend or scripts exist)
+# ===================================
+node_modules/
+dist/
+.next/
+out/
+.npm/
+.pnpm-store/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ===================================
+# Tailwind / Frontend build cache
+# ===================================
+.tailwind-cache
+*.tsbuildinfo
+
+# ===================================
+# Environment / Secrets
+# ===================================
+.env
+.env.*
+!.env.example
+
+# ===================================
+# IDE / Editor files
+# ===================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# ===================================
+# Docker
+# ===================================
+*.pid
+*.seed
+*.pid.lock
+docker-compose.override.yml
+
+# ===================================
+# Databases & dumps
+# ===================================
+*.db
+*.sqlite3
+*.rdb
+dump.rdb
+
+# ===================================
+# Jupyter / Experiments
+# ===================================
+.ipynb_checkpoints
+*.ipynb
+
+# ===================================
+# Misc
+# ===================================
+*.tgz
+*.gz
+*.zip
+*.tar
+*.tmp
+*.temp
+
+
+

@@ -1,0 +1,312 @@
+i am provinding the database collections( allowed collections) strucutre ,,,,,,,,,,,rent-payments:  {
+    "_id": { "$oid": "67c001000000000000000001" },
+    "company": { "$oid": "678611fa42a84c578c749155" },
+    "project": { "$oid": "67862265ad2676b575a289b5" },
+    "property": { "$oid": "678622d393a23e15395348de" },
+    "tenant": { "$oid": "6787636b6f80da4604ccf7e9" },
+    "startDate": { "$date": "2025-02-01T00:00:00.000Z" },
+    "endDate": { "$date": "2025-02-28T23:59:59.999Z" },
+    "amount": 6200,
+    "amountPaid": 6200,
+    "paymentStatus": "Paid",
+    "paymentMode": "Cash",
+    "receiptNumber": "rcpt-0001-abc",
+    "remarks": "Advance Payment Complete",
+    "paymentReceipt": "https://example.com/rent/payments/rcpt-0001.pdf",
+    "partialPayments": [],
+    "createdAt": { "$date": "2025-02-01T10:00:00.000Z" },
+    "updatedAt": { "$date": "2025-02-01T10:00:00.000Z" },
+    "__v": 0,
+    "embedded": true
+  },............................tenants:  {
+    "_id": { "$oid": "67e100000000000000000001" },
+    "company": { "$oid": "678611fa42a84c578c749155" },
+    "project": { "$oid": "67c200000000000000000001" },
+    "property": { "$oid": "67d400000000000000000001" },
+    "name": "Rohit Sharma",
+    "countryCode": "+91",
+    "phone": "9876501123",
+    "email": "rohit.sharma@example.com",
+    "aadharNo": "123456789012",
+    "panNo": "ABCDE1234F",
+    "totalMember": 1,
+    "members": [
+      {
+        "name": "Rohit Sharma",
+        "age": 32,
+        "relation": "Self",
+        "_id": { "$oid": "67e100000000000000000002" }
+      }....................................properties :  {
+    "_id": { "$oid": "67d400000000000000000001" },
+    "company": { "$oid": "678611fa42a84c578c749155" },
+    "project": { "$oid": "67c200000000000000000001" },
+    "propertyType": "Commercial",
+    "blockName": "BLOCK A",
+    "floorName": "Floor 2",
+    "series": "Series 2",
+    "shopNo": 101,
+    "furnishedStatus": "Semi-Furnished",
+    "minBudget": 1200000,
+    "maxBudget": 1500000,
+    "facing": "North",
+    "vastuCompliant": false,
+    "carpetArea": 1607,
+    "builtUpArea": 2007,
+    "superBuiltUpArea": 2407,
+    "carpetAreaType": "Square Yards",
+    "builtUpAreaType": "Square Yards",
+    "superBuiltUpAreaType": "Square Yards",
+    "noOfBalconies": 1,
+    "noOfBathRooms": 2,
+    "noOfBedRooms": 3,
+    "noOfKitchens": 1,
+    "noOfDrawingRooms": 1,
+    "noOfParkingLots": 2,
+    "images": [],
+    "propertyStatus": "Available",
+    "status": "Active",
+    "__v": 0,
+    "createdAt": { "$date": "2025-01-14T08:39:47.693Z" },
+    "updatedAt": { "$date": "2025-01-14T08:39:47.693Z" },
+    "amenities": [
+      { "$oid": "6785e62e6769548b89bdabd3" },
+      { "$oid": "6785f1756769548b89bdbce1" }
+    ],
+    "embedded": true
+  },..........................................projects:   {
+    "_id": { "$oid": "67c200000000000000000001" },
+    "company": { "$oid": "678611fa42a84c578c749155" },
+    "land": { "$oid": "67861ed50e5049e35aeafc8b" },
+    "name": "Skyline Residency",
+    "slug": "skyline-residency",
+    "projectType": ["Residential", "Commercial"],
+    "minBudget": 5000000,
+    "maxBudget": 8000000,
+    "startDate": { "$date": "2025-03-01T00:00:00.000Z" },
+    "completionDate": { "$date": "2025-12-31T00:00:00.000Z" },
+    "countryCode": "+91",
+    "phone": "9876501234",
+    "email": "skyline.residency@example.com",
+    "address": "Sector 10, Jaipur, Rajasthan, India",
+    "country": { "$oid": "671a0a362ad9f571b6d98d50" },
+    "state": { "$oid": "671a0a362ad9f571b6d98d54" },
+    "city": { "$oid": "671a0a362ad9f571b6d98d55" },
+    "zipCode": "110001",
+    "coordinates": [75.80, 26.90],
+    "reraRegistrationNumber": "RERA1001",
+    "projectRegistrationNumber": "PRJ1001",
+    "amenities": [
+      { "$oid": "6785e62e6769548b89bdabd3" },
+      { "$oid": "6785f1756769548b89bdbce1" }
+    ],
+    "status": "Active",
+    "createdAt": { "$date": "2025-03-01T00:00:00.000Z" },
+    "updatedAt": { "$date": "2025-03-01T00:00:00.000Z" },
+    "__v": 0,
+    "embedded": true
+  },........................................leads:   {
+    "_id": { "$oid": "67c100000000000000000001" },
+    "company": { "$oid": "678611fa42a84c578c749155" },
+    "leadNo": "#501",
+    "name": "Rohit Sharma",
+    "countryCode": "+91",
+    "phone": "9876543211",
+    "sourceType": "Broker",
+    "broker": { "$oid": "67b300000000000000000001" },
+    "commissionPercent": 8,
+    "minBudget": 4000000,
+    "maxBudget": 7000000,
+    "buyingTimeline": "0 TO 6 months",
+    "leadStatus": "Active",
+    "rotationCount": 0,
+    "lastActivity": { "$date": "2024-10-15T09:00:00.000Z" },
+    "status": "Active",
+    "createdAt": { "$date": "2024-10-15T08:00:00.000Z" },
+    "updatedAt": { "$date": "2024-10-15T08:00:00.000Z" },
+    "__v": 0,
+    "embedded": true
+  },..............................................................lands:   {
+    "_id": { "$oid": "67b200000000000000000001" },
+    "company": { "$oid": "678611fa42a84c578c749155" },
+    "name": "Sunrise Gardens",
+    "propertyType": [ "Residential" ],
+    "address": "Plot 12, Sunrise Layout, Jaipur, Rajasthan, India",
+    "country": { "$oid": "671a0a362ad9f571b6d98d50" },
+    "state": { "$oid": "671a0a362ad9f571b6d98d54" },
+    "city": { "$oid": "671a0a362ad9f571b6d98d55" },
+    "zipCode": "302020",
+    "coordinates": [ 75.8001, 26.9001 ],
+    "purchasePrice": 5000000,
+    "currentMarketValue": 5500000,
+    "propertyTaxRefNo": "TX1001",
+    "isOnLease": false,
+    "occupancyStatus": "Vacant",
+    "leaseAgreementDocs": [],
+    "isAnyConstructionExists": false,
+    "plotSize": 500,
+    "sizeType": "Square Meters",
+    "amenities": [
+      { "$oid": "6785e62e6769548b89bdabd3" },
+      { "$oid": "6785f1756769548b89bdbce1" }
+    ],
+    "ownerName": "Amit Kumar",
+    "ownerEmail": "amit.kumar@example.com",
+    "ownerCountryCode": "+91",
+    "ownerPhone": "911234567890",
+    "pastOwnerCountryCode": "+91",
+    "status": "Active",
+    "createdAt": { "$date": "2025-02-15T10:00:00.000Z" },
+    "updatedAt": { "$date": "2025-02-15T10:00:00.000Z" },
+    "__v": 0,
+    "embedded": true
+  },...........................................................................amenites: {
+    "_id": { "$oid": "6785e62e6769548b89bdabd3" },
+    "name": "Garden",
+    "amenityType": "Land",
+    "icon": "masters/3a9efa38b248ad5fdcbde3e42bb0cf.svg",
+    "status": "Active",
+    "createdAt": { "$date": "2025-01-14T04:21:02.080Z" },
+    "updatedAt": { "$date": "2025-01-24T07:00:03.391Z" },
+    "__v": 0
+  },....................................................................companies : {
+    "_id": { "$oid": "678611fa42a84c578c749155" },
+    "clientName": "Akash Purohit",
+    "name": "TaskGrid Solutions",
+    "address": "Vaishali Nagar Business Complexes",
+    "country": { "$oid": "671a0a362ad9f571b6d98d50" },
+    "state": { "$oid": "671a0a362ad9f571b6d98d54" },
+    "city": { "$oid": "671a0a362ad9f571b6d98d55" },
+    "primaryCountryCode": "+91",
+    "primaryPhone": "8819564825",
+    "secondaryCountryCode": "+91",
+    "secondaryPhone": "9752368423",
+    "primaryEmail": "akash@yopmail.com",
+    "contactPersonName": "Gouri Gautam",
+    "contactPersonCountryCode": "+91",
+    "contactPersonPhone": "3443534543",
+    "contactPersonEmail": "gouri@yopmail.com",
+    "plan": { "$oid": "67a32abbb2287ab1b5a1d9e5" },
+    "addOnServices": [ "IVR", "Email" ],
+    "planStartDate": { "$date": "2025-02-14T05:28:26.602Z" },
+    "planEndDate": { "$date": "2026-02-14T05:28:26.000Z" },
+    "maxNoOfUsers": 20,
+    "amountPaid": 100000000,
+    "subDomain": "https://akash.homelead.in",
+    "totalGeneralExpenses": 0,
+    "isSuperAdmin": false,
+    "status": "Active",
+    "createdAt": { "$date": "2025-01-14T07:27:54.018Z" },
+    "updatedAt": { "$date": "2025-02-14T05:28:26.610Z" },
+    "__v": 0,
+    "superAdmin": { "$oid": "678611fa42a84c578c749157" }
+  },............................................................................brokers:
+_id
+67b300000000000000000001
+company
+678611fa42a84c578c749155
+name
+"Katherine Chang"
+countryCode
+"+91"
+phone
+"1122334455"
+country
+671a0a362ad9f571b6d98d50
+city
+671a0a362ad9f571b6d98d55
+state
+671a0a362ad9f571b6d98d54
+address
+"7444 David Fields Suite 182, East Joanna, VA 77779"
+zipCode
+"69266"
+aadharNo
+"350380472038"
+panNo
+"HGVHY8876Y"
+commissionPercent
+49
+
+bankDetails
+Object
+
+bankNameId
+Object
+_id
+6785f1996769548b89bdbcf4
+name
+"Hdfc"
+icon
+"masters/f6d8f497851809d2e211ab69feb7bf.svg"
+bankAccountType
+"Saving"
+accountNo
+"3112035409"
+ifscCode
+"EECv71094"
+swiftCode
+"ldqEhez"
+
+realEstateLicenseDetails
+Object
+licenseNo
+"REAL5747930"
+licenseIssueDate
+2025-01-03T00:00:00.000+00:00
+licenseExpirationDate
+2025-11-20T00:00:00.000+00:00
+yearStartedInRealEstate
+1983
+status
+"Active"
+createdAt
+2025-01-14T07:02:25.897+00:00
+updatedAt
+2025-01-14T07:02:25.897+00:00
+__v
+0
+embedded
+true
+.................................................................................countires:  {
+    "_id": { "$oid": "671a0a362ad9f571b6d98d1c" },
+    "name": "Afghanistan",
+    "iso2": "AF",
+    "phoneCode": "+93",
+    "capital": "Kabul",
+    "currency": "AFN",
+    "currencySymbol": "؋",
+    "emoji": "🇦🇫",
+    "states": [
+      {
+        "_id": { "$oid": "671a0a362ad9f571b6d98d1d" },
+        "name": "Badakhshan",
+        "stateCode": "BDS",
+        "cities": [
+          {
+            "_id": { "$oid": "671a0a362ad9f571b6d98d1e" },
+            "name": "Ashkāsham"
+          },
+          {
+            "_id": { "$oid": "671a0a362ad9f571b6d98d1f" },
+            "name": "Fayzabad"
+          },
+          {
+            "_id": { "$oid": "671a0a362ad9f571b6d98d20" },
+            "name": "Jurm"
+          },
+          {
+            "_id": { "$oid": "671a0a362ad9f571b6d98d21" },
+            "name": "Khandūd"
+          },
+          {
+            "_id": { "$oid": "671a0a362ad9f571b6d98d22" },
+            "name": "Rāghistān"
+          },
+          {
+            "_id": { "$oid": "671a0a362ad9f571b6d98d23" },
+            "name": "Wākhān"
+          }
+        ]
+      }
+    ]
+  },........................this is the strucutre ...............so understand very clealry
