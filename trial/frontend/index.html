@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomeLead AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #00C48C;
+      --primary-dark: #00A876;
+      --primary-light: #00E69B;
+      --text-light: #ffffff;
+      --text-secondary: #B0B0B0;
+      --text-muted: #6B7280;
+      --bg-color: #000000;
+      --card-bg: #0A0A0A;
+      --chat-border: #1A1A1A;
+      --header-bg: #050505;
+      --input-bg: #111111;
+      --shadow-light: rgba(0, 196, 140, 0.2);
+      --shadow-dark: rgba(0, 0, 0, 0.8);
+      --glass-bg: rgba(10, 10, 10, 0.95);
+      --message-border: rgba(255, 255, 255, 0.08);
+
+      --chat-btn-size: 60px;
+      --chat-btn-gap: 2rem;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #000000 0%, #0A0A0A 100%);
+      color: var(--text-light);
+      margin: 0; 
+      padding: 0;
+      overflow-x: hidden;
+    }
+    #company-overlay {
+      position: fixed; 
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(20px);
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    #company-form {
+      background: var(--glass-bg);
+      backdrop-filter: blur(30px);
+      padding: 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 380px; 
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+    #company-form h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      color: var(--text-light);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    #company-input {
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      background: var(--input-bg);
+      border: 1px solid var(--chat-border);
+      border-radius: 10px;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    #company-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 196, 140, 0.1);
+    }
+    #company-submit {
+      padding: 0.875rem 1.75rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+      border-radius: 10px;
+      color: hsl(0, 0%, 100%);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    #company-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 196, 140, 0.3);
+    }
+    #chat-btn {
+      position: fixed;
+      bottom: var(--chat-btn-gap);
+      right: var(--chat-btn-gap);
+      width: var(--chat-btn-size);
+      height: var(--chat-btn-size);
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: 0 8px 25px var(--shadow-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      z-index: 10002;
+    }
+    #chat-btn:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 196, 140, 0.4);
+    }
+    #chat-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    #chat-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--text-light);
+    }
+    #chat-box {
+      position: fixed;
+      right: var(--chat-btn-gap);
+      bottom: calc(var(--chat-btn-size) + var(--chat-btn-gap) + 0.5rem);
+      width: 380px;
+      height: 520px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(30px);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%) scale(0.9);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 10001;
+      overflow: hidden;
+    }
+    #chat-box.active {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    .chat-header {
+      background: linear-gradient(135deg, var(--header-bg) 0%, #111111 100%);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .chat-header img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .chat-header span {
+      font-weight: 600;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--text-light), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.01em;
+    }
+    #chat-log {
+      flex: 1;
+      padding: 1.25rem;
+      overflow-y: auto;
+      background: transparent;
+      scroll-behavior: smooth;
+    }
+    #chat-log::-webkit-scrollbar { 
+      width: 4px; 
+    }
+    #chat-log::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 2px;
+    }
+    #chat-log::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 2px;
+    }
+
+    /* New keyframes for side-in animations */
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+    @keyframes slideInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    /* Base message style */
+    .message {
+      max-width: 80%;
+      margin-bottom: 1rem;
+      padding: 0.875rem 1.125rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      word-break: break-word;
+      line-height: 1.5;
+      position: relative;
+      border: 1px solid var(--message-border);
+      opacity: 0;
+    }
+
+    /* Bot messages slide in from left */
+    .bot-message {
+      background: linear-gradient(135deg, #0F0F0F, #1A1A1A);
+      color: var(--text-light);
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: slideInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 0.1s;
+    }
+
+    /* User messages slide in from right */
+    .user-message {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      margin-left: auto;
+      box-shadow: 0 4px 12px rgba(0, 196, 140, 0.2);
+      animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 0.1s;
+    }
+
+    .message-time {
+      position: absolute;
+      bottom: -18px;
+      right: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    .user-message .message-time {
+      right: 8px;
+    }
+    .bot-message .message-time {
+      left: 8px;
+      right: auto;
+    }
+    .loading-status {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.75rem 0;
+      opacity: 0;
+      animation: fadeInUp 0.3s ease forwards;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .loading-dots {
+      display: flex;
+      gap: 0.25rem;
+    }
+    .loading-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: dotPulse 1.4s infinite ease-in-out;
+    }
+    .loading-dots span:nth-child(2) { 
+      animation-delay: 0.2s; 
+    }
+    .loading-dots span:nth-child(3) { 
+      animation-delay: 0.4s; 
+    }
+    @keyframes dotPulse {
+      0%, 80%, 100% { 
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% { 
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .loading-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      transition: opacity 0.3s ease;
+    }
+    .input-group {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      gap: 0.75rem;
+    }
+    #user-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      background: var(--input-bg);
+      border: 1px solid var(--chat-border);
+      border-radius: 20px;
+      color: var(--text-light);
+      outline: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      font-weight: 400;
+      height: 40px;
+    }
+    #user-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(0, 196, 140, 0.1);
+    }
+    #user-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    @media (max-width: 420px) {
+      #chat-box { 
+        width: calc(100vw - 2rem); 
+        right: 1rem; 
+        bottom: 85px;
+        height: calc(100vh - 120px);
+        border-radius: 12px;
+      }
+      #chat-btn { 
+        right: 1rem; 
+        bottom: 1rem; 
+        width: 56px;
+        height: 56px;
+      }
+      #company-form {
+        padding: 2rem;
+        margin: 1rem;
+      }
+
+      .message {
+        font-size: 0.85rem;
+        padding: 0.75rem 1rem;
+        max-width: 85%;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    *:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div id="company-overlay">
+    <form id="company-form">
+      <h2>Enter Company ID</h2>
+      <input id="company-input" placeholder="67187f12c0a663e1608011df" required>
+      <button id="company-submit" type="submit">Continue</button>
+    </form>
+  </div>
+  <button id="chat-btn" disabled aria-label="Open Chatbot">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.03 2 11c0 2.38 1.02 4.54 2.7 6.23L4 22l4.84-2.21A10.44 10.44 0 0 0 12 20c5.52 0 10-4.03 10-9s-4.48-9-10-9zm-3 8a1 1 0 1 1 .001-2.001A1 1 0 0 1 9 10zm6 0a1 1 0 1 1 .001-2.001A1 1 0 0 1 15 10zm-6.35 4.94a.5.5 0 0 1 .7.06A4.95 4.95 0 0 0 12 16c1.5 0 2.89-.66 3.65-1.94a.5.5 0 1 1 .8.6A5.95 5.95 0 0 1 12 17a5.95 5.95 0 0 1-4.45-2.34.5.5 0 0 1 .1-.72z"/>
+    </svg>
+  </button>
+  <div id="chat-box">
+    <div class="chat-header">
+      <img src="/static/logo.png" alt="HomeLead Logo">
+      <span>HomeLead AI</span>
+    </div>
+    <div id="chat-log"></div>
+    <div class="input-group">
+      <input type="text" id="user-input" placeholder="Ask me anything about HomeLead…" disabled />
+    </div>
+  </div>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let companyId = "";
+      
+      const loadingMessages = [
+        "Analyzing...",
+        "lot of users ...",
+        "Be patient...",
+        "Working ...",
+        "Just a moment...",
+        "Almost done...",
+      ];
+  
+      let currentLoadingIndex = 0;
+      let loadingInterval = null;
+      const overlay   = document.getElementById("company-overlay");
+      const form      = document.getElementById("company-form");
+      const inputId   = document.getElementById("company-input");
+      const chatBtn   = document.getElementById("chat-btn");
+      const chatBox   = document.getElementById("chat-box");
+      const chatLog   = document.getElementById("chat-log");
+      const userInput = document.getElementById("user-input");
+  
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const val = inputId.value.trim();
+        if (!val) return;
+        companyId = val;
+        overlay.style.display = "none";
+        chatBtn.disabled = false;
+        userInput.disabled = false;
+      });
+  
+      chatBtn.addEventListener("click", () => {
+        const isOpen = chatBox.classList.toggle("active");
+        if (isOpen) userInput.focus();
+      });
+  
+      function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false
+        });
+      }
+  
+      function showLoadingStatus() {
+        const loadingDiv = document.createElement("div");
+        loadingDiv.className = "loading-status";
+        loadingDiv.innerHTML = `
+          <div class="loading-dots"><span></span><span></span><span></span></div>
+          <div class="loading-text">${loadingMessages[0]}</div>
+        `;
+        chatLog.appendChild(loadingDiv);
+        chatLog.scrollTop = chatLog.scrollHeight;
+        currentLoadingIndex = 0;
+        loadingInterval = setInterval(() => {
+          currentLoadingIndex = (currentLoadingIndex + 1) % loadingMessages.length;
+          const txt = loadingDiv.querySelector(".loading-text");
+          txt.style.opacity = "0";
+          setTimeout(() => {
+            txt.textContent = loadingMessages[currentLoadingIndex];
+            txt.style.opacity = "1";
+          }, 150);
+        }, 1500);
+        return loadingDiv;
+      }
+  
+      function hideLoadingStatus(div) {
+        clearInterval(loadingInterval);
+        div.style.opacity = "0";
+        div.style.transform = "translateY(-10px)";
+        setTimeout(() => div.remove(), 200);
+      }
+  
+      userInput.addEventListener("keydown", async e => {
+        if (e.key !== "Enter" || !userInput.value.trim()) return;
+        const text = userInput.value.trim();
+        appendMessage(text, "user-message");
+        userInput.value = "";
+  
+        const loader = showLoadingStatus();
+        const t0 = performance.now();
+  
+        try {
+          const res = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ company_id: companyId, query: text })
+          });
+          if (!res.ok) throw new Error(res.statusText);
+          const { reply } = await res.json();
+  
+          const t1 = performance.now();
+          const durationSec = ((t1 - t0) / 1000).toFixed(2);
+  
+          hideLoadingStatus(loader);
+          appendMessage(reply, "bot-message", durationSec);
+        } catch {
+          hideLoadingStatus(loader);
+          appendMessage("I’m experiencing technical difficulties. Please try again.", "bot-message");
+        }
+      });
+  
+      /**
+       * Append a chat message to the log.
+       * @param {string} txt
+       * @param {string} cls
+       * @param {?string|number} durationSec — round-trip time in seconds (only for bot)
+       */
+      function appendMessage(txt, cls, durationSec = null) {
+        const div = document.createElement("div");
+        div.className = `message ${cls}`;
+        if (cls.includes("welcome-message")) {
+          div.innerHTML = `
+            <div style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem;">
+              👋 Welcome to HomeLead !
+            </div>
+            <div style="font-size: 1rem;">
+              How can I assist you today?
+            </div>
+          `;
+        } else {
+          div.textContent = txt;
+        }
+  
+        const ts = document.createElement("span");
+        ts.className = "message-time";
+        ts.textContent = getCurrentTime()
+          + (durationSec != null ? ` (${durationSec}s)` : "");
+        div.appendChild(ts);
+  
+        chatLog.appendChild(div);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+  
+      let welcomeShown = false;
+      chatBtn.addEventListener("click", () => {
+        if (!welcomeShown && chatBox.classList.contains("active")) {
+          setTimeout(() => {
+            appendMessage("", "bot-message welcome-message");
+            welcomeShown = true;
+          }, 500);
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
